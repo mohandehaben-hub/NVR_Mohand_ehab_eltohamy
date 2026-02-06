@@ -9,39 +9,34 @@
         :root { --primary: #020617; --accent: #fbbf24; --text-light: #f8fafc; --danger: #ef4444; --success: #10b981; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; margin: 0; padding: 0; color: var(--text-light); }
         
-        /* شاشة الدخول الاحترافية */
         #loginOverlay { position: fixed; inset: 0; background: radial-gradient(circle at center, #1e293b 0%, #020617 100%); display: flex; align-items: center; justify-content: center; z-index: 9999; }
         .login-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; width: 90%; max-width: 420px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.2); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
         .login-card h1 { color: var(--accent); margin: 10px 0; font-size: 1.8rem; letter-spacing: 1px; }
         .slogan { color: #94a3b8; font-style: italic; font-size: 0.95rem; margin-bottom: 30px; display: block; }
-        .login-card input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; background: rgba(0,0,0,0.2); color: white; outline: none; text-align: center; font-size: 1rem; transition: 0.3s; }
-        .login-card input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
-        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
+        .login-card input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; background: rgba(0,0,0,0.2); color: white; outline: none; text-align: center; font-size: 1rem; }
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; text-transform: uppercase; }
 
-        /* الواجهة الداخلية */
         #app { display: none; padding: 15px; background: #f8fafc; min-height: 100vh; color: #1e293b; }
-        .header-card { background: #020617; color: white; padding: 30px 20px; border-radius: 25px; text-align: center; margin-bottom: 25px; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .header-card { background: #020617; color: white; padding: 30px 20px; border-radius: 25px; text-align: center; margin-bottom: 25px; position: relative; }
         .badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; }
         
         .box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; border: 1px solid #e2e8f0; }
         label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 0.9rem; color: #475569; }
-        .pick-row { display: flex; gap: 8px; margin-bottom: 20px; }
-        select { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem; background: #f1f5f9; cursor: pointer; }
+        .pick-row { display: flex; gap: 5px; margin-bottom: 20px; flex-wrap: wrap; }
+        select { flex: 1; min-width: 60px; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.85rem; background: #f1f5f9; }
         
         .btn-calc { background: #020617; color: white; width: 100%; padding: 16px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1rem; }
         .result-box { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px; display: none; }
         
         .call-fab { position: fixed; bottom: 25px; left: 25px; width: 65px; height: 65px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); text-decoration: none; z-index: 1000; }
 
-        .log-item { background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); position: relative; border: 1px solid #e2e8f0; }
-        .btn-delete-item { position: absolute; top: 15px; left: 15px; color: var(--danger); cursor: pointer; border: none; background: none; font-size: 1.2rem; }
+        .log-item { background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid #e2e8f0; position: relative; }
+        .btn-delete-item { position: absolute; top: 15px; left: 15px; color: var(--danger); cursor: pointer; border: none; background: none; }
         
         .tab-btn { padding: 12px 25px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; border-bottom: 3px solid transparent; }
         .tab-btn.active { border-bottom-color: #020617; color: #020617; }
         
         .dev-footer { font-size: 0.8rem; line-height: 1.5; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
-        .dev-footer b { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -50,57 +45,46 @@
 
 <div id="loginOverlay">
     <div class="login-card">
-        <div style="font-size: 4rem; color: var(--accent); margin-bottom: 5px;">🦅</div>
+        <div style="font-size: 4rem; color: var(--accent); margin-bottom: 5px;">🛡️</div>
         <h1>التهامي لتطوير الأنظمة الأمنية المتقدمة</h1>
         <span class="slogan">"حيث تنتهي الثغرات.. ويبدأ الردع"</span>
-        
         <input type="text" id="u" placeholder="اسم الضابط المسؤول">
         <input type="password" id="p" placeholder="كلمة المرور">
         <button class="btn-login" onclick="login()">دخول النظام</button>
-        <p id="err" style="color:var(--danger); display:none; margin-top:15px; font-weight:bold;">بيانات الدخول غير صحيحة!</p>
     </div>
 </div>
 
 <div id="app">
     <div class="header-card">
         <span id="role" class="badge"></span>
-        <div class="btn-logout" onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity: 0.7;"><i class="fas fa-power-off"></i></div>
-        <div style="font-size: 1.1rem; opacity: 0.9;">مرحباً بك في منصة</div>
-        <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent); margin-top: 5px;">التهامي للأمن الذكي</div>
-        <div id="clock" style="font-size: 1.8rem; margin-top: 15px; font-weight: 800; letter-spacing: 2px;">00:00:00</div>
-        
-        <div class="dev-footer">
-            تم التطوير بواسطة <b>المهندس مهند إيهاب التهامي</b><br>
-            خبير هندسة البرمجيات والمتخصص في تطوير الأنظمة الأمنية المتقدمة
-        </div>
+        <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer;"><i class="fas fa-power-off"></i></div>
+        <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent);">التهامي للأمن الذكي</div>
+        <div id="clock" style="font-size: 1.8rem; margin-top: 15px; font-weight: 800;">00:00:00</div>
+        <div class="dev-footer">تم التطوير بواسطة <b>المهندس مهند إيهاب التهامي</b></div>
     </div>
 
     <div class="box">
-        <label><i class="fas fa-video"></i> توقيت جهاز الـ DVR في الموقع:</label>
+        <label><i class="fas fa-video"></i> وقت الـ DVR في الموقع:</label>
         <div class="pick-row" id="camTime"></div>
         
-        <label><i class="fas fa-stopwatch"></i> التوقيت الحقيقي الحالي:</label>
+        <label><i class="fas fa-stopwatch"></i> الوقت الحقيقي الحالي:</label>
         <div class="pick-row" id="realTime"></div>
         
         <button class="btn-calc" onclick="calculate()">حساب فارق التوقيت والبحث</button>
 
         <div id="result" class="result-box">
-            <div style="font-size: 0.9rem; color: #166534; font-weight: bold;">نتيجة الفحص: توجه في البحث إلى وقت:</div>
-            <div id="resTime" style="font-size: 1.8rem; font-weight: 900; color: var(--danger); margin: 10px 0;"></div>
-            <button onclick="save()" style="width:100%; background: #1e293b; color:white; border:none; padding:15px; border-radius:12px; cursor:pointer; font-weight:bold; font-size: 1rem;">
-                <i class="fas fa-save"></i> أرشفة العملية في السجل
-            </button>
+            <div style="color: #166534; font-weight: bold;">🎯 وقت البحث الدقيق:</div>
+            <div id="resTime" style="font-size: 1.8rem; font-weight: 900; color: var(--danger); margin: 5px 0;"></div>
+            <div id="diffDisplay" style="color: #475569; font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;"></div>
+            <button onclick="save()" style="width:100%; background: #1e293b; color:white; border:none; padding:15px; border-radius:12px; font-weight:bold;">أرشفة العملية</button>
         </div>
     </div>
 
     <div class="box">
-        <div id="adminTabs" style="display:none; margin-bottom:20px; border-bottom:1px solid #e2e8f0;">
+        <div id="adminTabs" style="display:none; margin-bottom:15px;">
             <button class="tab-btn active" onclick="showTab('my')">عملياتي</button>
             <button class="tab-btn" onclick="showTab('all')">رقابة النظام</button>
         </div>
-        <h3 style="margin-top:0; font-size:1.1rem; display: flex; align-items: center; gap: 10px; color: #1e293b;">
-            <i class="fas fa-shield-alt" style="color:var(--accent)"></i> سجل الردع العملياتي
-        </h3>
         <div id="logList"></div>
     </div>
 </div>
@@ -113,15 +97,10 @@
         { id: "Bahe", pass: "55185512", name: "باهي", role: "user" }
     ];
 
-    let current = null;
-    let view = 'my';
-    let lastCalcData = {};
+    let current = null, view = 'my', lastData = {};
 
     function login() {
-        const uVal = document.getElementById('u').value;
-        const pVal = document.getElementById('p').value;
-        const user = users.find(u => u.id === uVal && u.pass === pVal);
-        
+        const user = users.find(u => u.id === document.getElementById('u').value && u.pass === document.getElementById('p').value);
         if(user) {
             current = user;
             document.getElementById('loginOverlay').style.display = 'none';
@@ -129,7 +108,7 @@
             document.getElementById('role').innerText = current.role === 'admin' ? "المدير العام" : "الضابط المسؤول";
             if(current.role === 'admin') document.getElementById('adminTabs').style.display = 'block';
             start();
-        } else { document.getElementById('err').style.display = 'block'; }
+        }
     }
 
     function start() {
@@ -140,15 +119,24 @@
 
     function build(id) {
         const el = document.getElementById(id), n = new Date();
-        el.innerHTML = `<select class="d">${o(1,31,n.getDate())}</select><select class="m">${o(1,12,n.getMonth()+1)}</select><select class="y">${o(2025,2030,n.getFullYear())}</select><select class="h">${o(0,23,n.getHours())}</select><select class="i">${o(0,59,n.getMinutes())}</select>`;
+        // تعديل السنوات لتكون من 2000 إلى 2200
+        el.innerHTML = `<select class="d">${o(1,31,n.getDate())}</select><select class="m">${o(1,12,n.getMonth()+1)}</select><select class="y">${o(2000,2200,n.getFullYear())}</select><select class="h">${o(0,23,n.getHours())}</select><select class="i">${o(0,59,n.getMinutes())}</select>`;
     }
     function o(s,e,v) { let r=""; for(let i=s;i<=e;i++) r+=`<option value="${i}" ${i==v?'selected':''}>${i<10?'0'+i:i}</option>`; return r; }
 
     function calculate() {
-        const cam = get('camTime'), real = get('realTime'), diff = new Date() - cam;
-        const res = new Date(real.getTime() - diff);
-        lastCalcData = { res: res.toLocaleString('ar-EG'), real: real.toLocaleString('ar-EG'), diff: `${Math.floor(Math.abs(diff)/3600000)} ساعة و ${Math.floor((Math.abs(diff)%3600000)/60000)} دقيقة` };
-        document.getElementById('resTime').innerText = lastCalcData.res;
+        const cam = get('camTime'), real = get('realTime'), diff = real - cam;
+        const res = new Date(real.getTime() - (real - cam));
+        
+        // حساب الفارق وعرضه فوراً
+        const totalSec = Math.floor(Math.abs(diff) / 1000);
+        const hours = Math.floor(totalSec / 3600);
+        const mins = Math.floor((totalSec % 3600) / 60);
+        const diffText = `فرق التوقيت: ${hours} ساعة و ${mins} دقيقة ${diff > 0 ? '(الجهاز متأخر)' : '(الجهاز متقدم)'}`;
+
+        lastData = { res: res.toLocaleString('ar-EG'), diff: diffText };
+        document.getElementById('resTime').innerText = lastData.res;
+        document.getElementById('diffDisplay').innerText = diffText;
         document.getElementById('result').style.display = 'block';
     }
 
@@ -158,42 +146,34 @@
     }
 
     function save() {
-        const title = prompt("اسم الموقع المستهدف:"); if(!title) return;
-        const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastCalcData.res, diff: lastCalcData.diff };
-        let logs = JSON.parse(localStorage.getItem('eltohamy_pro_data') || '[]');
+        const title = prompt("اسم الموقع:"); if(!title) return;
+        const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res, diff: lastData.diff };
+        let logs = JSON.parse(localStorage.getItem('eltohamy_v7') || '[]');
         logs.unshift(log);
-        localStorage.setItem('eltohamy_pro_data', JSON.stringify(logs));
+        localStorage.setItem('eltohamy_v7', JSON.stringify(logs));
         render();
-        alert("تمت الأرشفة بنجاح في قاعدة البيانات");
     }
 
-    function showTab(t) {
-        view = t;
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
-        render();
-    }
+    function showTab(t) { view = t; document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.innerText.includes(t=='my'?'عملياتي':'رقابة'))); render(); }
 
     function render() {
-        let logs = JSON.parse(localStorage.getItem('eltohamy_pro_data') || '[]');
-        const list = document.getElementById('logList');
+        let logs = JSON.parse(localStorage.getItem('eltohamy_v7') || '[]');
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
-
-        list.innerHTML = logs.map(l => `
+        document.getElementById('logList').innerHTML = logs.map(l => `
             <div class="log-item">
-                ${current.role === 'admin' ? `<button class="btn-delete-item" onclick="deleteItem(${l.id})"><i class="fas fa-trash-alt"></i></button>` : ''}
-                <div style="font-weight: 800; color: #020617; margin-bottom: 5px;">📍 الموقع: ${l.title}</div>
-                <div style="font-size: 0.85rem; color: #64748b;">بواسطة: ${l.uName}</div>
-                <div style="color:var(--danger); font-weight: 900; font-size: 1.1rem; margin-top: 5px;">🎯 وقت البحث: ${l.res}</div>
+                ${current.role === 'admin' ? `<button class="btn-delete-item" onclick="deleteItem(${l.id})"><i class="fas fa-trash"></i></button>` : ''}
+                <b>📍 الموقع: ${l.title}</b><br>
+                <small>بواسطة: ${l.uName}</small><br>
+                <span style="color:var(--danger); font-weight:bold;">🎯 البحث: ${l.res}</span><br>
+                <small>⏱️ ${l.diff}</small>
             </div>
-        `).join('') || '<p style="text-align:center; color:#94a3b8; padding: 20px;">السجل نظيف.. لا توجد عمليات حالية</p>';
+        `).join('') || '<p style="text-align:center; color:#94a3b8;">لا توجد سجلات</p>';
     }
 
     function deleteItem(id) {
-        if(confirm("سيتم حذف السجل نهائياً من الذاكرة الأمنية.. هل أنت متأكد؟")) {
-            let logs = JSON.parse(localStorage.getItem('eltohamy_pro_data') || '[]');
-            logs = logs.filter(l => l.id !== id);
-            localStorage.setItem('eltohamy_pro_data', JSON.stringify(logs));
+        if(confirm("حذف السجل؟")) {
+            let logs = JSON.parse(localStorage.getItem('eltohamy_v7') || '[]');
+            localStorage.setItem('eltohamy_v7', JSON.stringify(logs.filter(l => l.id !== id)));
             render();
         }
     }
