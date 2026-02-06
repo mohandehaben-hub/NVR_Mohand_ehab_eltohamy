@@ -10,11 +10,11 @@
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; margin: 0; padding: 0; color: var(--text-light); }
         
         #loginOverlay { position: fixed; inset: 0; background: radial-gradient(circle at center, #1e293b 0%, #020617 100%); display: flex; align-items: center; justify-content: center; z-index: 9999; }
-        .login-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; width: 90%; max-width: 420px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.2); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        .login-card h1 { color: var(--accent); margin: 10px 0; font-size: 1.8rem; letter-spacing: 1px; }
+        .login-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; width: 90%; max-width: 420px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.2); }
+        .login-card h1 { color: var(--accent); margin: 10px 0; font-size: 1.8rem; }
         .slogan { color: #94a3b8; font-style: italic; font-size: 0.95rem; margin-bottom: 30px; display: block; }
-        .login-card input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; background: rgba(0,0,0,0.2); color: white; outline: none; text-align: center; font-size: 1rem; }
-        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; text-transform: uppercase; }
+        .login-card input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; background: rgba(0,0,0,0.2); color: white; outline: none; text-align: center; }
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; }
 
         #app { display: none; padding: 15px; background: #f8fafc; min-height: 100vh; color: #1e293b; }
         .header-card { background: #020617; color: white; padding: 30px 20px; border-radius: 25px; text-align: center; margin-bottom: 25px; position: relative; }
@@ -25,8 +25,11 @@
         .pick-row { display: flex; gap: 5px; margin-bottom: 20px; flex-wrap: wrap; }
         select { flex: 1; min-width: 60px; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.85rem; background: #f1f5f9; }
         
-        .btn-calc { background: #020617; color: white; width: 100%; padding: 16px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .btn-calc { background: #020617; color: white; width: 100%; padding: 16px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; }
+        
+        /* مربع النتيجة المطور */
         .result-box { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px; display: none; }
+        .analysis-badge { background: #dcfce7; color: #166534; padding: 10px; border-radius: 12px; margin-top: 10px; font-size: 0.95rem; border: 1px dashed #22c55e; line-height: 1.6; }
         
         .call-fab { position: fixed; bottom: 25px; left: 25px; width: 65px; height: 65px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); text-decoration: none; z-index: 1000; }
 
@@ -46,7 +49,7 @@
 <div id="loginOverlay">
     <div class="login-card">
         <div style="font-size: 4rem; color: var(--accent); margin-bottom: 5px;">🛡️</div>
-        <h1>التهامي لتطوير الأنظمة الأمنية المتقدمة</h1>
+        <h1>التهامي لتطوير الأنظمة الأمنية</h1>
         <span class="slogan">"حيث تنتهي الثغرات.. ويبدأ الردع"</span>
         <input type="text" id="u" placeholder="اسم الضابط المسؤول">
         <input type="password" id="p" placeholder="كلمة المرور">
@@ -60,23 +63,25 @@
         <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer;"><i class="fas fa-power-off"></i></div>
         <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent);">التهامي للأمن الذكي</div>
         <div id="clock" style="font-size: 1.8rem; margin-top: 15px; font-weight: 800;">00:00:00</div>
-        <div class="dev-footer">تم التطوير بواسطة <b>المهندس مهند إيهاب التهامي</b></div>
+        <div class="dev-footer">تم التطوير بواسطة <b>المهندس مهند التهامي</b></div>
     </div>
 
     <div class="box">
         <label><i class="fas fa-video"></i> وقت الـ DVR في الموقع:</label>
         <div class="pick-row" id="camTime"></div>
         
-        <label><i class="fas fa-stopwatch"></i> الوقت الحقيقي الحالي:</label>
+        <label><i class="fas fa-stopwatch"></i> الوقت الحقيقي (ساعتك):</label>
         <div class="pick-row" id="realTime"></div>
         
-        <button class="btn-calc" onclick="calculate()">حساب فارق التوقيت والبحث</button>
+        <button class="btn-calc" onclick="calculate()">تحليل فارق التوقيت والبحث</button>
 
         <div id="result" class="result-box">
             <div style="color: #166534; font-weight: bold;">🎯 وقت البحث الدقيق:</div>
             <div id="resTime" style="font-size: 1.8rem; font-weight: 900; color: var(--danger); margin: 5px 0;"></div>
-            <div id="diffDisplay" style="color: #475569; font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;"></div>
-            <button onclick="save()" style="width:100%; background: #1e293b; color:white; border:none; padding:15px; border-radius:12px; font-weight:bold;">أرشفة العملية</button>
+            
+            <div class="analysis-badge" id="fullAnalysis"></div>
+            
+            <button onclick="save()" style="width:100%; background: #1e293b; color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; margin-top:15px;">أرشفة العملية</button>
         </div>
     </div>
 
@@ -119,24 +124,28 @@
 
     function build(id) {
         const el = document.getElementById(id), n = new Date();
-        // تعديل السنوات لتكون من 2000 إلى 2200
         el.innerHTML = `<select class="d">${o(1,31,n.getDate())}</select><select class="m">${o(1,12,n.getMonth()+1)}</select><select class="y">${o(2000,2200,n.getFullYear())}</select><select class="h">${o(0,23,n.getHours())}</select><select class="i">${o(0,59,n.getMinutes())}</select>`;
     }
     function o(s,e,v) { let r=""; for(let i=s;i<=e;i++) r+=`<option value="${i}" ${i==v?'selected':''}>${i<10?'0'+i:i}</option>`; return r; }
 
     function calculate() {
-        const cam = get('camTime'), real = get('realTime'), diff = real - cam;
-        const res = new Date(real.getTime() - (real - cam));
+        const cam = get('camTime'), real = get('realTime');
+        const diffMs = real - cam; // الفارق بالملي ثانية
+        const res = new Date(real.getTime() - diffMs);
         
-        // حساب الفارق وعرضه فوراً
-        const totalSec = Math.floor(Math.abs(diff) / 1000);
-        const hours = Math.floor(totalSec / 3600);
-        const mins = Math.floor((totalSec % 3600) / 60);
-        const diffText = `فرق التوقيت: ${hours} ساعة و ${mins} دقيقة ${diff > 0 ? '(الجهاز متأخر)' : '(الجهاز متقدم)'}`;
+        // حساب الفارق التفصيلي (أيام، ساعات، دقائق)
+        const absDiff = Math.abs(diffMs);
+        const days = Math.floor(absDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((absDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((absDiff % (1000 * 60 * 60)) / (1000 * 60));
+        
+        let status = diffMs > 0 ? "متأخر عن الحقيقي" : "متقدم عن الحقيقي";
+        let analysisText = `⚠️ <b>تحليل الفارق:</b><br>الجهاز ${status} بمقدار:<br><b>${days} يوم، ${hours} ساعة، ${mins} دقيقة</b>`;
 
-        lastData = { res: res.toLocaleString('ar-EG'), diff: diffText };
+        lastData = { res: res.toLocaleString('ar-EG'), diff: `${days} يوم و ${hours} ساعة و ${mins} دقيقة (${status})` };
+        
         document.getElementById('resTime').innerText = lastData.res;
-        document.getElementById('diffDisplay').innerText = diffText;
+        document.getElementById('fullAnalysis').innerHTML = analysisText;
         document.getElementById('result').style.display = 'block';
     }
 
@@ -148,16 +157,16 @@
     function save() {
         const title = prompt("اسم الموقع:"); if(!title) return;
         const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res, diff: lastData.diff };
-        let logs = JSON.parse(localStorage.getItem('eltohamy_v7') || '[]');
+        let logs = JSON.parse(localStorage.getItem('eltohamy_v8') || '[]');
         logs.unshift(log);
-        localStorage.setItem('eltohamy_v7', JSON.stringify(logs));
+        localStorage.setItem('eltohamy_v8', JSON.stringify(logs));
         render();
     }
 
-    function showTab(t) { view = t; document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.innerText.includes(t=='my'?'عملياتي':'رقابة'))); render(); }
+    function showTab(t) { view = t; render(); }
 
     function render() {
-        let logs = JSON.parse(localStorage.getItem('eltohamy_v7') || '[]');
+        let logs = JSON.parse(localStorage.getItem('eltohamy_v8') || '[]');
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
             <div class="log-item">
@@ -165,15 +174,15 @@
                 <b>📍 الموقع: ${l.title}</b><br>
                 <small>بواسطة: ${l.uName}</small><br>
                 <span style="color:var(--danger); font-weight:bold;">🎯 البحث: ${l.res}</span><br>
-                <small>⏱️ ${l.diff}</small>
+                <div style="font-size: 0.8rem; background:#eee; padding:5px; border-radius:5px; margin-top:5px;">⏱️ ${l.diff}</div>
             </div>
-        `).join('') || '<p style="text-align:center; color:#94a3b8;">لا توجد سجلات</p>';
+        `).join('') || '<p style="text-align:center;">لا توجد سجلات</p>';
     }
 
     function deleteItem(id) {
-        if(confirm("حذف السجل؟")) {
-            let logs = JSON.parse(localStorage.getItem('eltohamy_v7') || '[]');
-            localStorage.setItem('eltohamy_v7', JSON.stringify(logs.filter(l => l.id !== id)));
+        if(confirm("حذف؟")) {
+            let logs = JSON.parse(localStorage.getItem('eltohamy_v8') || '[]');
+            localStorage.setItem('eltohamy_v8', JSON.stringify(logs.filter(l => l.id !== id)));
             render();
         }
     }
