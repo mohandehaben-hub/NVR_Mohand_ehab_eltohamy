@@ -3,280 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام إدارة التوقيت الأمني | م. مهند التهامي</title>
+    <title>التهامي للأنظمة الأمنية المتقدمة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #1a237e;
-            --accent: #d4af37; /* لون ذهبي ليناسب رمز النسر */
-            --bg: #f1f5f9;
-            --card: #ffffff;
-            --danger: #dc2626;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg);
-            margin: 0;
-            padding: 15px;
-            color: #1f2937;
-        }
-
-        .app-wrapper { max-width: 500px; margin: 0 auto; }
-
-        .profile-card {
-            background: linear-gradient(135deg, #1a237e 0%, #000051 100%);
-            color: white;
-            padding: 30px 20px;
-            border-radius: 25px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border-bottom: 4px solid var(--accent);
-        }
-
-        .eagle-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-
-        .welcome-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            opacity: 0.95;
-        }
-
-        .live-clock-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            border-radius: 15px;
-            margin: 15px 0;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+        :root { --primary: #020617; --accent: #fbbf24; --text-light: #f8fafc; --danger: #ef4444; --success: #10b981; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; margin: 0; padding: 0; color: var(--text-light); }
         
-        #liveClock { 
-            font-size: 1.8rem; 
-            font-weight: bold; 
-            color: var(--accent);
-        }
+        /* شاشة الدخول الاحترافية */
+        #loginOverlay { position: fixed; inset: 0; background: radial-gradient(circle at center, #1e293b 0%, #020617 100%); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+        .login-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; width: 90%; max-width: 420px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.2); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .login-card h1 { color: var(--accent); margin: 10px 0; font-size: 1.8rem; letter-spacing: 1px; }
+        .slogan { color: #94a3b8; font-style: italic; font-size: 0.95rem; margin-bottom: 30px; display: block; }
+        .login-card input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; background: rgba(0,0,0,0.2); color: white; outline: none; text-align: center; font-size: 1rem; transition: 0.3s; }
+        .login-card input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
 
-        .contact-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: #22c55e; color: white;
-            padding: 12px 25px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-        }
+        /* الواجهة الداخلية */
+        #app { display: none; padding: 15px; background: #f8fafc; min-height: 100vh; color: #1e293b; }
+        .header-card { background: #020617; color: white; padding: 30px 20px; border-radius: 25px; text-align: center; margin-bottom: 25px; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; }
+        
+        .box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; border: 1px solid #e2e8f0; }
+        label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 0.9rem; color: #475569; }
+        .pick-row { display: flex; gap: 8px; margin-bottom: 20px; }
+        select { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem; background: #f1f5f9; cursor: pointer; }
+        
+        .btn-calc { background: #020617; color: white; width: 100%; padding: 16px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .result-box { background: #f0fdf4; border: 2px solid #22c55e; padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px; display: none; }
+        
+        .call-fab { position: fixed; bottom: 25px; left: 25px; width: 65px; height: 65px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); text-decoration: none; z-index: 1000; }
 
-        .tool-box {
-            background: var(--card);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-
-        .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 700; color: #374151; font-size: 0.9rem; }
-
-        .picker-row {
-            display: flex; gap: 5px; background: #f8fafc;
-            padding: 10px; border-radius: 12px; border: 1px solid #e2e8f0;
-        }
-
-        select {
-            flex: 1; padding: 8px; border-radius: 6px;
-            border: 1px solid #cbd5e1; outline: none; font-size: 0.8rem;
-        }
-
-        button {
-            width: 100%; padding: 15px; border: none; border-radius: 12px;
-            font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem;
-        }
-
-        .btn-calc { background: var(--primary); color: white; border: 1px solid var(--accent); }
-        .btn-save { background: #6366f1; color: white; margin-top: 15px; display: none; }
-
-        .analysis-box {
-            background: #fffbeb; border: 1px solid #f59e0b;
-            padding: 15px; border-radius: 12px; margin-top: 15px;
-            display: none; color: #92400e; text-align: center;
-        }
-
-        #result-display {
-            background: #f0fdf4; border: 2px solid #22c55e;
-            padding: 20px; border-radius: 15px; text-align: center; margin-top: 15px; display: none;
-        }
-
-        .history-section {
-            background: var(--card); padding: 20px; border-radius: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
-
-        .history-item {
-            position: relative; border-right: 4px solid var(--accent); background: #f8fafc;
-            padding: 12px; margin-bottom: 10px; border-radius: 8px; font-size: 0.85rem;
-        }
-
-        .btn-delete { position: absolute; left: 12px; top: 12px; color: #94a3b8; cursor: pointer; }
+        .log-item { background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); position: relative; border: 1px solid #e2e8f0; }
+        .btn-delete-item { position: absolute; top: 15px; left: 15px; color: var(--danger); cursor: pointer; border: none; background: none; font-size: 1.2rem; }
+        
+        .tab-btn { padding: 12px 25px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; border-bottom: 3px solid transparent; }
+        .tab-btn.active { border-bottom-color: #020617; color: #020617; }
+        
+        .dev-footer { font-size: 0.8rem; line-height: 1.5; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
+        .dev-footer b { color: var(--accent); }
     </style>
 </head>
 <body>
 
-<div class="app-wrapper">
-    <div class="profile-card">
-        <div class="eagle-icon">🦅</div>
-        <div class="welcome-text">
-            تم التطوير بواسطة <b>المهندس مهند إيهاب التهامي</b>،<br>
-            خبير هندسة البرمجيات والمتخصص في تطوير الأنظمة الأمنية المتقدمة.
-        </div>
-        
-        <div class="live-clock-box">
-            <div style="font-size: 0.8rem; opacity: 0.9; margin-bottom: 5px;">التوقيت المباشر (الآن):</div>
-            <div id="liveClock">00:00:00</div>
-        </div>
+<a href="tel:01021102607" class="call-fab"><i class="fas fa-phone"></i></a>
 
-        <a href="tel:01021102607" class="contact-btn">
-            <i class="fas fa-phone-alt"></i> اتصل بي: 01021102607
-        </a>
+<div id="loginOverlay">
+    <div class="login-card">
+        <div style="font-size: 4rem; color: var(--accent); margin-bottom: 5px;">🦅</div>
+        <h1>التهامي لتطوير الأنظمة الأمنية المتقدمة</h1>
+        <span class="slogan">"حيث تنتهي الثغرات.. ويبدأ الردع"</span>
+        
+        <input type="text" id="u" placeholder="اسم الضابط المسؤول">
+        <input type="password" id="p" placeholder="كلمة المرور">
+        <button class="btn-login" onclick="login()">دخول النظام</button>
+        <p id="err" style="color:var(--danger); display:none; margin-top:15px; font-weight:bold;">بيانات الدخول غير صحيحة!</p>
+    </div>
+</div>
+
+<div id="app">
+    <div class="header-card">
+        <span id="role" class="badge"></span>
+        <div class="btn-logout" onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity: 0.7;"><i class="fas fa-power-off"></i></div>
+        <div style="font-size: 1.1rem; opacity: 0.9;">مرحباً بك في منصة</div>
+        <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent); margin-top: 5px;">التهامي للأمن الذكي</div>
+        <div id="clock" style="font-size: 1.8rem; margin-top: 15px; font-weight: 800; letter-spacing: 2px;">00:00:00</div>
+        
+        <div class="dev-footer">
+            تم التطوير بواسطة <b>المهندس مهند إيهاب التهامي</b><br>
+            خبير هندسة البرمجيات والمتخصص في تطوير الأنظمة الأمنية المتقدمة
+        </div>
     </div>
 
-    <div class="tool-box">
-        <div class="input-group">
-            <label><i class="fas fa-exclamation-triangle"></i> وقت الـ DVR الحالي (الوقت الغلط):</label>
-            <div class="picker-row" id="camTimePicker"></div>
-        </div>
-
-        <div class="input-group">
-            <label><i class="fas fa-bullseye"></i> الوقت المطلوب (الوقت اللي إنت عايزه):</label>
-            <div class="picker-row" id="eventTimePicker"></div>
-        </div>
-
-        <button class="btn-calc" onclick="calculate()">
-            <i class="fas fa-search-location"></i> احسب هات الساعة كام في الـ DVR
-        </button>
+    <div class="box">
+        <label><i class="fas fa-video"></i> توقيت جهاز الـ DVR في الموقع:</label>
+        <div class="pick-row" id="camTime"></div>
         
-        <div id="analysisBox" class="analysis-box">
-            <i class="fas fa-info-circle"></i> <span id="diffText"></span>
-        </div>
+        <label><i class="fas fa-stopwatch"></i> التوقيت الحقيقي الحالي:</label>
+        <div class="pick-row" id="realTime"></div>
+        
+        <button class="btn-calc" onclick="calculate()">حساب فارق التوقيت والبحث</button>
 
-        <div id="result-display">
-            <div style="font-size: 0.9rem; font-weight: bold; color: #166534;">المفروض تبحث في الـ DVR عن وقت:</div>
-            <div id="finalTime" style="font-size: 1.6rem; font-weight: 900; color: var(--danger); margin-top: 5px;"></div>
+        <div id="result" class="result-box">
+            <div style="font-size: 0.9rem; color: #166534; font-weight: bold;">نتيجة الفحص: توجه في البحث إلى وقت:</div>
+            <div id="resTime" style="font-size: 1.8rem; font-weight: 900; color: var(--danger); margin: 10px 0;"></div>
+            <button onclick="save()" style="width:100%; background: #1e293b; color:white; border:none; padding:15px; border-radius:12px; cursor:pointer; font-weight:bold; font-size: 1rem;">
+                <i class="fas fa-save"></i> أرشفة العملية في السجل
+            </button>
         </div>
-
-        <button id="saveBtn" class="btn-save" onclick="saveToHistory()">
-            <i class="fas fa-save"></i> حفظ في سجل العمليات
-        </button>
     </div>
 
-    <div class="history-section">
-        <h3 style="margin-top:0; font-size: 1.1rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">🦅 سجل عمليات البحث</h3>
-        <div id="historyList"></div>
-        <button id="clearAllBtn" onclick="clearAll()" style="display:none; background:none; color:red; font-size: 0.75rem; border:1px solid red; margin-top:15px; border-radius: 8px; padding: 5px 10px; width: auto;">مسح السجل بالكامل</button>
+    <div class="box">
+        <div id="adminTabs" style="display:none; margin-bottom:20px; border-bottom:1px solid #e2e8f0;">
+            <button class="tab-btn active" onclick="showTab('my')">عملياتي</button>
+            <button class="tab-btn" onclick="showTab('all')">رقابة النظام</button>
+        </div>
+        <h3 style="margin-top:0; font-size:1.1rem; display: flex; align-items: center; gap: 10px; color: #1e293b;">
+            <i class="fas fa-shield-alt" style="color:var(--accent)"></i> سجل الردع العملياتي
+        </h3>
+        <div id="logList"></div>
     </div>
 </div>
 
 <script>
-    function updateLiveTime() {
-        const now = new Date();
-        document.getElementById('liveClock').innerText = now.toLocaleTimeString('ar-EG');
-    }
-    setInterval(updateLiveTime, 1000);
-    updateLiveTime();
+    const users = [
+        { id: "Eltohamy", pass: "551855125500", name: "م. مهند التهامي", role: "admin" },
+        { id: "Moheb", pass: "0102030", name: "محب", role: "user" },
+        { id: "Elhgrasy", pass: "203010", name: "الهجراسي", role: "user" },
+        { id: "Bahe", pass: "55185512", name: "باهي", role: "user" }
+    ];
 
-    function buildPickers(id) {
-        const p = document.getElementById(id); const n = new Date();
-        p.innerHTML = `
-            <select class="day">${opts(1,31,n.getDate())}</select>
-            <select class="month">${opts(1,12,n.getMonth()+1)}</select>
-            <select class="year">${opts(2024,2030,n.getFullYear())}</select>
-            <select class="hour">${opts(0,23,n.getHours())}</select>
-            <select class="min">${opts(0,59,n.getMinutes())}</select>`;
+    let current = null;
+    let view = 'my';
+    let lastCalcData = {};
+
+    function login() {
+        const uVal = document.getElementById('u').value;
+        const pVal = document.getElementById('p').value;
+        const user = users.find(u => u.id === uVal && u.pass === pVal);
+        
+        if(user) {
+            current = user;
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            document.getElementById('role').innerText = current.role === 'admin' ? "المدير العام" : "الضابط المسؤول";
+            if(current.role === 'admin') document.getElementById('adminTabs').style.display = 'block';
+            start();
+        } else { document.getElementById('err').style.display = 'block'; }
     }
 
-    function opts(s,e,sel) {
-        let h = ""; for(let i=s; i<=e; i++) h+=`<option value="${i}" ${i==sel?'selected':''}>${i<10?'0'+i:i}</option>`;
-        return h;
+    function start() {
+        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString('ar-EG'); }, 1000);
+        build('camTime'); build('realTime');
+        render();
     }
 
-    function getVal(id) {
-        const p = document.getElementById(id);
-        return new Date(p.querySelector('.year').value, p.querySelector('.month').value -1, p.querySelector('.day').value, p.querySelector('.hour').value, p.querySelector('.min').value);
+    function build(id) {
+        const el = document.getElementById(id), n = new Date();
+        el.innerHTML = `<select class="d">${o(1,31,n.getDate())}</select><select class="m">${o(1,12,n.getMonth()+1)}</select><select class="y">${o(2025,2030,n.getFullYear())}</select><select class="h">${o(0,23,n.getHours())}</select><select class="i">${o(0,59,n.getMinutes())}</select>`;
     }
-
-    let currentResult = "";
+    function o(s,e,v) { let r=""; for(let i=s;i<=e;i++) r+=`<option value="${i}" ${i==v?'selected':''}>${i<10?'0'+i:i}</option>`; return r; }
 
     function calculate() {
-        const nowPhone = new Date();
-        const camTime = getVal('camTimePicker');
-        const desiredTime = getVal('eventTimePicker');
-        
-        const diffMs = nowPhone - camTime;
-        const absDiff = Math.abs(diffMs);
-        const d = Math.floor(absDiff/(1000*60*60*24));
-        const h = Math.floor((absDiff/(1000*60*60))%24);
-        const m = Math.floor((absDiff/(1000*60))%60);
-        
-        let diffMsg = `تحليل: الجهاز ${diffMs>0?'متأخر':'مقدم'} بمقدار `;
-        if(d > 0) diffMsg += `${d} يوم و `;
-        diffMsg += `${h} ساعة و ${m} دقيقة.`;
-        
-        document.getElementById('diffText').innerText = diffMsg;
-        document.getElementById('analysisBox').style.display = 'block';
-
-        const searchDate = new Date(desiredTime.getTime() - diffMs);
-        currentResult = searchDate.toLocaleString('ar-EG', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
-        
-        document.getElementById('finalTime').innerText = currentResult;
-        document.getElementById('result-display').style.display = 'block';
-        document.getElementById('saveBtn').style.display = 'block';
-        
-        document.getElementById('result-display').scrollIntoView({behavior: 'smooth'});
+        const cam = get('camTime'), real = get('realTime'), diff = new Date() - cam;
+        const res = new Date(real.getTime() - diff);
+        lastCalcData = { res: res.toLocaleString('ar-EG'), real: real.toLocaleString('ar-EG'), diff: `${Math.floor(Math.abs(diff)/3600000)} ساعة و ${Math.floor((Math.abs(diff)%3600000)/60000)} دقيقة` };
+        document.getElementById('resTime').innerText = lastCalcData.res;
+        document.getElementById('result').style.display = 'block';
     }
 
-    function saveToHistory() {
-        const desc = prompt("اكتب وصفاً للعملية (مثل: الباب الخلفي):");
-        if(!desc) return;
-        const record = { id: Date.now(), desc, time: currentResult, diff: document.getElementById('diffText').innerText };
-        let history = JSON.parse(localStorage.getItem('eagle_history') || '[]');
-        history.unshift(record);
-        localStorage.setItem('eagle_history', JSON.stringify(history));
-        renderHistory();
+    function get(id) {
+        const e = document.getElementById(id);
+        return new Date(e.querySelector('.y').value, e.querySelector('.m').value-1, e.querySelector('.d').value, e.querySelector('.h').value, e.querySelector('.i').value);
     }
 
-    function deleteOne(id) {
-        if(confirm("حذف هذه العملية؟")) {
-            let history = JSON.parse(localStorage.getItem('eagle_history') || '[]');
-            history = history.filter(x => x.id !== id);
-            localStorage.setItem('eagle_history', JSON.stringify(history));
-            renderHistory();
+    function save() {
+        const title = prompt("اسم الموقع المستهدف:"); if(!title) return;
+        const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastCalcData.res, diff: lastCalcData.diff };
+        let logs = JSON.parse(localStorage.getItem('eltohamy_pro_data') || '[]');
+        logs.unshift(log);
+        localStorage.setItem('eltohamy_pro_data', JSON.stringify(logs));
+        render();
+        alert("تمت الأرشفة بنجاح في قاعدة البيانات");
+    }
+
+    function showTab(t) {
+        view = t;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        render();
+    }
+
+    function render() {
+        let logs = JSON.parse(localStorage.getItem('eltohamy_pro_data') || '[]');
+        const list = document.getElementById('logList');
+        if(view === 'my') logs = logs.filter(l => l.uId === current.id);
+
+        list.innerHTML = logs.map(l => `
+            <div class="log-item">
+                ${current.role === 'admin' ? `<button class="btn-delete-item" onclick="deleteItem(${l.id})"><i class="fas fa-trash-alt"></i></button>` : ''}
+                <div style="font-weight: 800; color: #020617; margin-bottom: 5px;">📍 الموقع: ${l.title}</div>
+                <div style="font-size: 0.85rem; color: #64748b;">بواسطة: ${l.uName}</div>
+                <div style="color:var(--danger); font-weight: 900; font-size: 1.1rem; margin-top: 5px;">🎯 وقت البحث: ${l.res}</div>
+            </div>
+        `).join('') || '<p style="text-align:center; color:#94a3b8; padding: 20px;">السجل نظيف.. لا توجد عمليات حالية</p>';
+    }
+
+    function deleteItem(id) {
+        if(confirm("سيتم حذف السجل نهائياً من الذاكرة الأمنية.. هل أنت متأكد؟")) {
+            let logs = JSON.parse(localStorage.getItem('eltohamy_pro_data') || '[]');
+            logs = logs.filter(l => l.id !== id);
+            localStorage.setItem('eltohamy_pro_data', JSON.stringify(logs));
+            render();
         }
     }
-
-    function clearAll() {
-        if(confirm("مسح سجل العمليات بالكامل؟")) { localStorage.removeItem('eagle_history'); renderHistory(); }
-    }
-
-    function renderHistory() {
-        const list = document.getElementById('historyList');
-        const history = JSON.parse(localStorage.getItem('eagle_history') || '[]');
-        document.getElementById('clearAllBtn').style.display = history.length > 0 ? 'block' : 'none';
-        if(history.length === 0) { list.innerHTML = '<p style="color:#999; text-align:center; padding:10px;">السجل فارغ</p>'; return; }
-        list.innerHTML = history.map(item => `
-            <div class="history-item">
-                <i class="fas fa-trash-alt btn-delete" onclick="deleteOne(${item.id})"></i>
-                <div style="font-weight:bold; color:var(--primary); margin-bottom:5px;">${item.desc}</div>
-                <div>وقت البحث: <span style="color:var(--danger); font-weight:bold;">${item.time}</span></div>
-                <div style="font-size:0.7rem; color:#666; margin-top:5px; border-top: 1px dashed #ddd; pt-3">${item.diff}</div>
-            </div>
-        `).join('');
-    }
-
-    buildPickers('camTimePicker');
-    buildPickers('eventTimePicker');
-    renderHistory();
 </script>
 </body>
 </html>
