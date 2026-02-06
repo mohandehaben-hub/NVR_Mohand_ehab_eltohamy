@@ -29,11 +29,10 @@
             100% { background-position: 0% 50%; }
         }
 
-        #loginOverlay, #registerOverlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; background: rgba(2, 6, 23, 0.95); }
-        .login-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .login-card input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; text-align: center; box-sizing: border-box; }
-        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
+        #loginOverlay, #registerOverlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; background: rgba(2, 6, 23, 0.9); }
+        .login-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.3); }
+        .login-card input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; text-align: center; }
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; }
 
         #app { display: none; padding: 20px; max-width: 600px; margin: 0 auto; }
 
@@ -44,33 +43,27 @@
         }
         
         .welcome-user { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: bold; }
-        .profile-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+
+        .profile-container { position: relative; width: 110px; height: 110px; margin: 0 auto 10px; cursor: pointer; transition: 0.4s; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--accent); object-fit: cover; box-shadow: 0 0 25px rgba(251, 191, 36, 0.4); }
+        
         .badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; }
         
         .box { 
-            background: white; padding: 25px; border-radius: 25px; 
+            background: white; padding: 25px; border-radius: 30px; 
             margin-bottom: 25px; border: 1px solid #e2e8f0; color: #1e293b;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        label { display: block; margin-bottom: 12px; font-weight: 700; color: #334155; font-size: 0.95rem; }
-        .pick-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-        select { flex: 1; min-width: 65px; padding: 12px; border-radius: 12px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: bold; color: #1e293b; }
+        label { display: block; margin-bottom: 12px; font-weight: 700; color: #475569; }
+        .pick-row { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+        select { flex: 1; min-width: 60px; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: bold; }
         
-        .btn-calc { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-        .btn-calc:active { transform: scale(0.98); }
+        .btn-calc { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; }
 
-        .result-box { background: #fff; border: 2px solid var(--accent); padding: 25px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .analysis-label { font-size: 0.85rem; color: #64748b; margin-bottom: 5px; }
-        .analysis-value { font-weight: bold; color: var(--primary); margin-bottom: 20px; font-size: 1rem; }
-        .target-label { font-weight: bold; color: var(--danger); margin-bottom: 8px; font-size: 1.1rem; }
-        .target-time { font-size: 2rem; font-weight: 900; color: var(--primary); margin-bottom: 20px; font-family: 'Courier New', monospace; }
-
-        .call-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4); }
-        .log-item { background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid #e2e8f0; }
+        .result-box { background: #fefce8; border: 2px solid var(--accent); padding: 20px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; color: #1e293b; }
+        
+        .call-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .log-item { background: #f8fafc; padding: 15px; border-radius: 20px; margin-bottom: 12px; border-right: 6px solid var(--accent); border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
@@ -80,10 +73,12 @@
 <div id="loginOverlay">
     <div class="login-card">
         <div style="font-size: 3.5rem; color: var(--accent);">🛡️</div>
-        <h1 style="color:var(--accent); font-size:1.4rem; margin:10px 0;">منظومة التحقيق الزمني الرقمي</h1>
-        <p style="color:#94a3b8; font-size:0.8rem; margin-bottom: 20px;">التهامي للأنظمة الأمنية المتقدمة</p>
-        <input type="text" id="u" placeholder="اسم المستخدم">
-        <input type="password" id="p" placeholder="كلمة المرور">
+        <h1 style="color:var(--accent); font-size:1.5rem; margin:10px 0;">التهامي للأنظمة الأمنية المتقدمة</h1>
+        <p style="color:#94a3b8; font-size:0.8rem;">وحدة المعاينة الجنائية الرقمية</p>
+        
+        <input type="text" id="u" placeholder="هوية الضابط المسؤول">
+        <input type="password" id="p" placeholder="كود التصريح السري">
+        
         <button class="btn-login" onclick="login()">دخول النظام</button>
         <span style="color:var(--accent); cursor:pointer; display:block; margin-top:20px; text-decoration:underline; font-size: 0.8rem;" onclick="toggleReg(true)">طلب تصريح دخول لضابط جديد</span>
     </div>
@@ -91,11 +86,11 @@
 
 <div id="registerOverlay" style="display:none;">
     <div class="login-card">
-        <h2 style="color:var(--accent);">طلب تصريح معاينة</h2>
+        <h2 style="color:var(--accent);">طلب تصريح</h2>
         <input type="text" id="regName" placeholder="الاسم الرباعي">
-        <input type="text" id="regUser" placeholder="اسم المستخدم المطلوب">
+        <input type="text" id="regUser" placeholder="اليوزر المطلوب">
         <button class="btn-login" style="background:var(--success); color:white;" onclick="sendRequest()">إرسال للمهندس مهند</button>
-        <span style="color:#94a3b8; cursor:pointer; display:block; margin-top:20px;" onclick="toggleReg(false)">العودة للخلف</span>
+        <span style="color:#94a3b8; cursor:pointer; display:block; margin-top:20px;" onclick="toggleReg(false)">إلغاء</span>
     </div>
 </div>
 
@@ -105,43 +100,35 @@
         <span id="role" class="badge"></span>
         <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity:0.6;"><i class="fas fa-power-off"></i></div>
         
-        <div class="profile-container">
-            <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" class="profile-img" alt="المهندس مهند">
+        <div class="profile-container" onclick="window.open('https://i.ibb.co/Y78PM4nn/me-jpg.jpg', '_blank')">
+            <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" class="profile-img" alt="المهندس مهند التهامي">
         </div>
         
-        <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">م. مهند إيهاب التهامي</div>
-        <div id="clock" style="font-size: 1.5rem; margin-top: 5px; font-weight: 700; font-family: 'Courier New', monospace;">00:00:00</div>
+        <div style="font-size: 1.3rem; font-weight: 900; color: var(--accent);">المهندس مهند إيهاب التهامي</div>
+        <div id="clock" style="font-size: 1.6rem; margin-top: 5px; font-weight: 800;">00:00:00</div>
     </div>
 
     <div class="box">
-        <label><i class="fas fa-video"></i> 1. توقيت الجهاز (DVR) الظاهر على الشاشة:</label>
+        <label><i class="fas fa-video"></i> 1. وقت الـ DVR الحالي (الظاهر على الشاشة):</label>
         <div class="pick-row" id="camTime"></div>
 
-        <label><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة (الحقيقي):</label>
+        <label><i class="fas fa-bullseye"></i> 2. وقت الواقعة الحقيقي (المستهدف):</label>
         <div class="pick-row" id="realTime"></div>
 
-        <button class="btn-calc" onclick="calculate()">
-            <i class="fas fa-sync-alt"></i> معالجة البيانات واستخراج الفارق
-        </button>
+        <button class="btn-calc" onclick="calculate()">حساب توقيت البحث في الـ DVR</button>
 
         <div id="result" class="result-box">
-            <div class="analysis-label">⚠️ الفارق الزمني المرصود:</div>
-            <div id="fullAnalysis" class="analysis-value"></div>
-
-            <div class="target-label">🎯 نقطة البحث المستهدفة:</div>
-            <div id="resTime" class="target-time"></div>
-            
-            <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; cursor:pointer;">
-                <i class="fas fa-save"></i> حفظ في سجل المعاينات
-            </button>
+            <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">🎯 اذهب في الـ DVR لهذا التوقيت:</div>
+            <div id="resTime" style="font-size: 1.7rem; font-weight: 900; color: var(--danger); margin-bottom: 10px;"></div>
+            <div id="fullAnalysis" style="font-size: 0.85rem; padding: 10px; background: white; border-radius: 10px; border: 1px solid #ddd;"></div>
+            <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; cursor:pointer; margin-top:15px;">أرشفة النتيجة</button>
         </div>
     </div>
 
     <div class="box">
-        <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--primary);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
         <div id="adminTabs" style="display:none; margin-bottom:15px; text-align: center;">
-            <button onclick="view='my';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
-            <button onclick="view='all';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
+            <button onclick="view='my';render()" style="border:none; background:#eee; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
+            <button onclick="view='all';render()" style="border:none; background:#eee; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
         </div>
         <div id="logList"></div>
     </div>
@@ -160,7 +147,7 @@
     function toggleReg(s) { document.getElementById('loginOverlay').style.display=s?'none':'flex'; document.getElementById('registerOverlay').style.display=s?'flex':'none'; }
     
     function sendRequest() {
-        const msg = `طلب تصريح دخول للمنصة:%0Aالاسم: ${document.getElementById('regName').value}%0Aاليوزر المطلوب: ${document.getElementById('regUser').value}`;
+        const msg = `طلب تصريح دخول للمنصة:%0Aالاسم: ${document.getElementById('regName').value}%0Aاليوزر: ${document.getElementById('regUser').value}`;
         window.open(`https://wa.me/201021102607?text=${msg}`);
     }
 
@@ -186,36 +173,22 @@
 
     function build(id) {
         const el = document.getElementById(id), n = new Date();
-        el.innerHTML = `
-            <select class="d">${o(1,31,n.getDate())}</select>
-            <select class="m">${o(1,12,n.getMonth()+1)}</select>
-            <select class="y">${o(2020,2030,n.getFullYear())}</select>
-            <select class="h">${o(0,23,n.getHours())}</select>
-            <select class="i">${o(0,59,n.getMinutes())}</select>
-        `;
+        el.innerHTML = `<select class="d">${o(1,31,n.getDate())}</select><select class="m">${o(1,12,n.getMonth()+1)}</select><select class="y">${o(2000,2200,n.getFullYear())}</select><select class="h">${o(0,23,n.getHours())}</select><select class="i">${o(0,59,n.getMinutes())}</select>`;
     }
     function o(s,e,v) { let r=""; for(let i=s;i<=e;i++) r+=`<option value="${i}" ${i==v?'selected':''}>${i<10?'0'+i:i}</option>`; return r; }
 
     function calculate() {
         const cam = get('camTime'), realTarget = get('realTime');
         const now = new Date();
-        
-        // الفارق بين وقت الكاميرا والوقت الحالي للموبايل
         const diffMs = now.getTime() - cam.getTime();
-        
-        // نقطة البحث = وقت الحادثة مطروح منه الفارق
         const res = new Date(realTarget.getTime() - diffMs);
         
-        const abs = Math.abs(diffMs), 
-              d = Math.floor(abs/86400000), 
-              h = Math.floor((abs%86400000)/3600000), 
-              m = Math.floor((abs%3600000)/60000);
-        
-        const status = diffMs > 0 ? "متأخر عن الحقيقة" : "متقدم عن الحقيقة";
-        const analysis = `ساعة الـ DVR ${status} بمقدار [ ${d} يوم و ${h} ساعة و ${m} دقيقة ]`;
+        const abs = Math.abs(diffMs), d = Math.floor(abs/86400000), h = Math.floor((abs%86400000)/3600000), m = Math.floor((abs%3600000)/60000);
+        const status = diffMs > 0 ? "متأخر" : "متقدم";
+        const analysis = `جهاز الـ DVR ${status} بمقدار: ${d} يوم و ${h} ساعة و ${m} دقيقة.`;
         
         lastData = { res: res.toLocaleString('ar-EG'), diff: analysis };
-        document.getElementById('resTime').innerText = res.toLocaleTimeString('ar-EG', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true});
+        document.getElementById('resTime').innerText = lastData.res;
         document.getElementById('fullAnalysis').innerText = analysis;
         document.getElementById('result').style.display = 'block';
     }
@@ -226,25 +199,23 @@
     }
 
     function save() {
-        const title = prompt("اسم موقع المعاينة (مثلاً: محل الذهب):"); if(!title) return;
+        const title = prompt("اسم موقع المعاينة:"); if(!title) return;
         const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res, diff: lastData.diff };
-        let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
-        logs.unshift(log); localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
+        let logs = JSON.parse(localStorage.getItem('eltohamy_final_v6') || '[]');
+        logs.unshift(log); localStorage.setItem('eltohamy_final_v6', JSON.stringify(logs));
         render();
-        alert("تم حفظ المعاينة في الأرشيف");
     }
 
     function render() {
-        let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
+        let logs = JSON.parse(localStorage.getItem('eltohamy_final_v6') || '[]');
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
             <div class="log-item">
-                <div style="font-weight:bold; color:var(--primary);">📍 الموقع: ${l.title}</div>
-                <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">بواسطة: ${l.uName}</div>
-                <div style="color:var(--danger); font-weight:bold; font-size:0.9rem;">🎯 البحث: ${l.res}</div>
-                <div style="font-size:0.75rem; color:#444; background:#eee; padding:5px; border-radius:5px; margin-top:5px;">${l.diff}</div>
+                <b>📍 الموقع: ${l.title}</b><br><small>بواسطة: ${l.uName}</small><br>
+                <span style="color:var(--danger); font-weight:bold;">🎯 وقت البحث: ${l.res}</span><br>
+                <small>⏱️ ${l.diff}</small>
             </div>
-        `).join('') || '<p style="text-align:center; color:#999;">لا توجد سجلات حالياً</p>';
+        `).join('') || '<p style="text-align:center;">السجل فارغ</p>';
     }
 </script>
 </body>
