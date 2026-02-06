@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة التوقيت الأمني | م. مهند التهامي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --accent: #d4af37; /* لون ذهبي ليناسب رمز النسر */
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --danger: #dc2626;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 15px;
+            color: #1f2937;
+        }
+
+        .app-wrapper { max-width: 500px; margin: 0 auto; }
+
+        .profile-card {
+            background: linear-gradient(135deg, #1a237e 0%, #000051 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .eagle-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .welcome-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .live-clock-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        #liveClock { 
+            font-size: 1.8rem; 
+            font-weight: bold; 
+            color: var(--accent);
+        }
+
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #22c55e; color: white;
+            padding: 12px 25px; border-radius: 50px;
+            text-decoration: none; font-weight: bold;
+        }
+
+        .tool-box {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; color: #374151; font-size: 0.9rem; }
+
+        .picker-row {
+            display: flex; gap: 5px; background: #f8fafc;
+            padding: 10px; border-radius: 12px; border: 1px solid #e2e8f0;
+        }
+
+        select {
+            flex: 1; padding: 8px; border-radius: 6px;
+            border: 1px solid #cbd5e1; outline: none; font-size: 0.8rem;
+        }
+
+        button {
+            width: 100%; padding: 15px; border: none; border-radius: 12px;
+            font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem;
+        }
+
+        .btn-calc { background: var(--primary); color: white; border: 1px solid var(--accent); }
+        .btn-save { background: #6366f1; color: white; margin-top: 15px; display: none; }
+
+        .analysis-box {
+            background: #fffbeb; border: 1px solid #f59e0b;
+            padding: 15px; border-radius: 12px; margin-top: 15px;
+            display: none; color: #92400e; text-align: center;
+        }
+
+        #result-display {
+            background: #f0fdf4; border: 2px solid #22c55e;
+            padding: 20px; border-radius: 15px; text-align: center; margin-top: 15px; display: none;
+        }
+
+        .history-section {
+            background: var(--card); padding: 20px; border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .history-item {
+            position: relative; border-right: 4px solid var(--accent); background: #f8fafc;
+            padding: 12px; margin-bottom: 10px; border-radius: 8px; font-size: 0.85rem;
+        }
+
+        .btn-delete { position: absolute; left: 12px; top: 12px; color: #94a3b8; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <div class="profile-card">
+        <div class="eagle-icon">🦅</div>
+        <div class="welcome-text">
+            تم التطوير بواسطة <b>المهندس مهند إيهاب التهامي</b>،<br>
+            خبير هندسة البرمجيات والمتخصص في تطوير الأنظمة الأمنية المتقدمة.
+        </div>
+        
+        <div class="live-clock-box">
+            <div style="font-size: 0.8rem; opacity: 0.9; margin-bottom: 5px;">التوقيت المباشر (الآن):</div>
+            <div id="liveClock">00:00:00</div>
+        </div>
+
+        <a href="tel:01021102607" class="contact-btn">
+            <i class="fas fa-phone-alt"></i> اتصل بي: 01021102607
+        </a>
+    </div>
+
+    <div class="tool-box">
+        <div class="input-group">
+            <label><i class="fas fa-exclamation-triangle"></i> وقت الـ DVR الحالي (الوقت الغلط):</label>
+            <div class="picker-row" id="camTimePicker"></div>
+        </div>
+
+        <div class="input-group">
+            <label><i class="fas fa-bullseye"></i> الوقت المطلوب (الوقت اللي إنت عايزه):</label>
+            <div class="picker-row" id="eventTimePicker"></div>
+        </div>
+
+        <button class="btn-calc" onclick="calculate()">
+            <i class="fas fa-search-location"></i> احسب هات الساعة كام في الـ DVR
+        </button>
+        
+        <div id="analysisBox" class="analysis-box">
+            <i class="fas fa-info-circle"></i> <span id="diffText"></span>
+        </div>
+
+        <div id="result-display">
+            <div style="font-size: 0.9rem; font-weight: bold; color: #166534;">المفروض تبحث في الـ DVR عن وقت:</div>
+            <div id="finalTime" style="font-size: 1.6rem; font-weight: 900; color: var(--danger); margin-top: 5px;"></div>
+        </div>
+
+        <button id="saveBtn" class="btn-save" onclick="saveToHistory()">
+            <i class="fas fa-save"></i> حفظ في سجل العمليات
+        </button>
+    </div>
+
+    <div class="history-section">
+        <h3 style="margin-top:0; font-size: 1.1rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">🦅 سجل عمليات البحث</h3>
+        <div id="historyList"></div>
+        <button id="clearAllBtn" onclick="clearAll()" style="display:none; background:none; color:red; font-size: 0.75rem; border:1px solid red; margin-top:15px; border-radius: 8px; padding: 5px 10px; width: auto;">مسح السجل بالكامل</button>
+    </div>
+</div>
+
+<script>
+    function updateLiveTime() {
+        const now = new Date();
+        document.getElementById('liveClock').innerText = now.toLocaleTimeString('ar-EG');
+    }
+    setInterval(updateLiveTime, 1000);
+    updateLiveTime();
+
+    function buildPickers(id) {
+        const p = document.getElementById(id); const n = new Date();
+        p.innerHTML = `
+            <select class="day">${opts(1,31,n.getDate())}</select>
+            <select class="month">${opts(1,12,n.getMonth()+1)}</select>
+            <select class="year">${opts(2024,2030,n.getFullYear())}</select>
+            <select class="hour">${opts(0,23,n.getHours())}</select>
+            <select class="min">${opts(0,59,n.getMinutes())}</select>`;
+    }
+
+    function opts(s,e,sel) {
+        let h = ""; for(let i=s; i<=e; i++) h+=`<option value="${i}" ${i==sel?'selected':''}>${i<10?'0'+i:i}</option>`;
+        return h;
+    }
+
+    function getVal(id) {
+        const p = document.getElementById(id);
+        return new Date(p.querySelector('.year').value, p.querySelector('.month').value -1, p.querySelector('.day').value, p.querySelector('.hour').value, p.querySelector('.min').value);
+    }
+
+    let currentResult = "";
+
+    function calculate() {
+        const nowPhone = new Date();
+        const camTime = getVal('camTimePicker');
+        const desiredTime = getVal('eventTimePicker');
+        
+        const diffMs = nowPhone - camTime;
+        const absDiff = Math.abs(diffMs);
+        const d = Math.floor(absDiff/(1000*60*60*24));
+        const h = Math.floor((absDiff/(1000*60*60))%24);
+        const m = Math.floor((absDiff/(1000*60))%60);
+        
+        let diffMsg = `تحليل: الجهاز ${diffMs>0?'متأخر':'مقدم'} بمقدار `;
+        if(d > 0) diffMsg += `${d} يوم و `;
+        diffMsg += `${h} ساعة و ${m} دقيقة.`;
+        
+        document.getElementById('diffText').innerText = diffMsg;
+        document.getElementById('analysisBox').style.display = 'block';
+
+        const searchDate = new Date(desiredTime.getTime() - diffMs);
+        currentResult = searchDate.toLocaleString('ar-EG', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
+        
+        document.getElementById('finalTime').innerText = currentResult;
+        document.getElementById('result-display').style.display = 'block';
+        document.getElementById('saveBtn').style.display = 'block';
+        
+        document.getElementById('result-display').scrollIntoView({behavior: 'smooth'});
+    }
+
+    function saveToHistory() {
+        const desc = prompt("اكتب وصفاً للعملية (مثل: الباب الخلفي):");
+        if(!desc) return;
+        const record = { id: Date.now(), desc, time: currentResult, diff: document.getElementById('diffText').innerText };
+        let history = JSON.parse(localStorage.getItem('eagle_history') || '[]');
+        history.unshift(record);
+        localStorage.setItem('eagle_history', JSON.stringify(history));
+        renderHistory();
+    }
+
+    function deleteOne(id) {
+        if(confirm("حذف هذه العملية؟")) {
+            let history = JSON.parse(localStorage.getItem('eagle_history') || '[]');
+            history = history.filter(x => x.id !== id);
+            localStorage.setItem('eagle_history', JSON.stringify(history));
+            renderHistory();
+        }
+    }
+
+    function clearAll() {
+        if(confirm("مسح سجل العمليات بالكامل؟")) { localStorage.removeItem('eagle_history'); renderHistory(); }
+    }
+
+    function renderHistory() {
+        const list = document.getElementById('historyList');
+        const history = JSON.parse(localStorage.getItem('eagle_history') || '[]');
+        document.getElementById('clearAllBtn').style.display = history.length > 0 ? 'block' : 'none';
+        if(history.length === 0) { list.innerHTML = '<p style="color:#999; text-align:center; padding:10px;">السجل فارغ</p>'; return; }
+        list.innerHTML = history.map(item => `
+            <div class="history-item">
+                <i class="fas fa-trash-alt btn-delete" onclick="deleteOne(${item.id})"></i>
+                <div style="font-weight:bold; color:var(--primary); margin-bottom:5px;">${item.desc}</div>
+                <div>وقت البحث: <span style="color:var(--danger); font-weight:bold;">${item.time}</span></div>
+                <div style="font-size:0.7rem; color:#666; margin-top:5px; border-top: 1px dashed #ddd; pt-3">${item.diff}</div>
+            </div>
+        `).join('');
+    }
+
+    buildPickers('camTimePicker');
+    buildPickers('eventTimePicker');
+    renderHistory();
+</script>
+</body>
+</html>
