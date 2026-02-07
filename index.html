@@ -12,13 +12,14 @@
             --text-light: #f8fafc; 
             --danger: #ef4444; 
             --success: #10b981; 
+            --whatsapp: #25d366;
         }
 
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             margin: 0; padding: 0; color: var(--text-light);
-            /* إضافة الخلفية الجديدة هنا */
-            background: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.7)), 
+            /* الخلفية الآن ظاهرة بوضوح مع طبقة تعتيم خفيفة جداً */
+            background: linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.4)), 
                         url('https://i.postimg.cc/9Xq262b6/c6fd2a0e-609d-4da7-a03d-ce2d4d6f3d11.jpg');
             background-size: cover;
             background-position: center;
@@ -28,59 +29,66 @@
 
         #loginOverlay, #registerOverlay { 
             position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; 
-            /* جعل خلفية الدخول شفافة لتظهر صورة الخلفية الأساسية */
-            background: rgba(2, 6, 23, 0.4); 
-            backdrop-filter: blur(8px);
+            background: rgba(2, 6, 23, 0.2); 
+            backdrop-filter: blur(5px);
         }
         
-        .login-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .login-card { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .login-card input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; text-align: center; box-sizing: border-box; }
+        
         .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
+        
+        /* أزرار التواصل في الخارج */
+        .external-contact { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-ext { flex: 1; padding: 10px; border-radius: 10px; text-decoration: none; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; color: white; }
+        .bg-call { background: var(--success); }
+        .bg-wa { background: var(--whatsapp); }
 
         #app { display: none; padding: 20px; max-width: 600px; margin: 0 auto; }
 
+        /* تعديل الهيدر والمربعات لتكون شفافة وتظهر الخلفية */
         .header-card { 
-            background: rgba(2, 6, 23, 0.75); backdrop-filter: blur(10px);
+            background: rgba(2, 6, 23, 0.6); backdrop-filter: blur(15px);
             color: white; padding: 30px 20px; border-radius: 30px; text-align: center; 
-            margin-bottom: 25px; position: relative; border: 1px solid rgba(251, 191, 36, 0.2);
+            margin-bottom: 25px; position: relative; border: 1px solid rgba(251, 191, 36, 0.4);
         }
-        
-        .welcome-user { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: bold; }
-        .profile-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
-        .badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; }
         
         .box { 
-            background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 25px; 
-            margin-bottom: 25px; border: 1px solid #e2e8f0; color: #1e293b;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
+            padding: 25px; border-radius: 25px; 
+            margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.2); color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        label { display: block; margin-bottom: 12px; font-weight: 700; color: #334155; font-size: 0.95rem; }
-        .pick-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-        select { flex: 1; min-width: 65px; padding: 12px; border-radius: 12px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: bold; color: #1e293b; }
+        .box label { color: var(--accent); }
+        .box select { background: rgba(255,255,255,0.9); }
+
+        .welcome-user { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: bold; }
+        .profile-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
         
-        .btn-calc { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-        .btn-calc:active { transform: scale(0.98); }
+        /* التوقيع الخاص بك */
+        .dev-credit { font-size: 0.75rem; color: #cbd5e1; margin-top: 8px; font-style: italic; }
 
-        .result-box { background: #fff; border: 2px solid var(--accent); padding: 25px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
 
-        .analysis-label { font-size: 0.85rem; color: #64748b; margin-bottom: 5px; }
-        .analysis-value { font-weight: bold; color: var(--primary); margin-bottom: 20px; font-size: 1rem; }
-        .target-label { font-weight: bold; color: var(--danger); margin-bottom: 8px; font-size: 1.1rem; }
-        .target-time { font-size: 2rem; font-weight: 900; color: var(--primary); margin-bottom: 20px; font-family: 'Courier New', monospace; }
+        .result-box { background: rgba(255, 255, 255, 0.95); color: #000; border: 2px solid var(--accent); padding: 25px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; }
 
-        .call-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4); }
-        .log-item { position: relative; background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid #e2e8f0; }
-        .delete-btn { position: absolute; top: 10px; left: 10px; color: #cbd5e1; cursor: pointer; transition: 0.3s; }
-        .delete-btn:hover { color: var(--danger); }
+        /* أزرار التواصل العائمة */
+        .fab-container { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+        .fab { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .fab-call { background: var(--success); }
+        .fab-wa { background: var(--whatsapp); }
+
+        .log-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 15px; border-radius: 15px; margin-bottom: 12px; color: white; }
     </style>
 </head>
 <body>
 
-<a href="tel:01021102607" class="call-fab"><i class="fas fa-phone"></i></a>
+<div class="fab-container">
+    <a href="https://wa.me/201021102607" class="fab fab-wa"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:01021102607" class="fab fab-call"><i class="fas fa-phone"></i></a>
+</div>
 
 <div id="loginOverlay">
     <div class="login-card">
@@ -90,6 +98,12 @@
         <input type="text" id="u" placeholder="اسم الضابط المسؤول ">
         <input type="password" id="p" placeholder="كلمة المرور">
         <button class="btn-login" onclick="login()">دخول النظام</button>
+        
+        <div class="external-contact">
+            <a href="tel:01021102607" class="btn-ext bg-call"><i class="fas fa-phone"></i> اتصل بنا</a>
+            <a href="https://wa.me/201021102607" class="btn-ext bg-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
+        </div>
+
         <span style="color:var(--accent); cursor:pointer; display:block; margin-top:20px; text-decoration:underline; font-size: 0.8rem;" onclick="toggleReg(true)">طلب تصريح دخول لضابط جديد</span>
     </div>
 </div>
@@ -107,7 +121,7 @@
 <div id="app">
     <div class="header-card">
         <div id="welcomeMsg" class="welcome-user"></div>
-        <span id="role" class="badge"></span>
+        <span id="role" class="badge" style="position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold;"></span>
         <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity:0.6;"><i class="fas fa-power-off"></i></div>
         
         <div class="profile-container">
@@ -115,7 +129,8 @@
         </div>
         
         <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">المهندس مهند إيهاب التهامي</div>
-        <div id="clock" style="font-size: 1.5rem; margin-top: 5px; font-weight: 700; font-family: 'Courier New', monospace;">00:00:00</div>
+        <div class="dev-credit">تم تطوير هذا النظام بواسطة المهندس مهند التهامي</div>
+        <div id="clock" style="font-size: 1.5rem; margin-top: 10px; font-weight: 700; font-family: 'Courier New', monospace;">00:00:00</div>
     </div>
 
     <div class="box">
@@ -130,11 +145,11 @@
         </button>
 
         <div id="result" class="result-box">
-            <div class="analysis-label">⚠️ الفارق الزمني المرصود:</div>
-            <div id="fullAnalysis" class="analysis-value"></div>
+            <div class="analysis-label" style="font-size: 0.85rem; color: #64748b; margin-bottom: 5px;">⚠️ الفارق الزمني المرصود:</div>
+            <div id="fullAnalysis" style="font-weight: bold; color: #000; margin-bottom: 20px; font-size: 1rem;"></div>
 
-            <div class="target-label">🎯 نقطة البحث المستهدفة:</div>
-            <div id="resTime" class="target-time"></div>
+            <div class="target-label" style="font-weight: bold; color: var(--danger); margin-bottom: 8px; font-size: 1.1rem;">🎯 نقطة البحث المستهدفة:</div>
+            <div id="resTime" style="font-size: 2rem; font-weight: 900; color: #000; margin-bottom: 20px; font-family: 'Courier New', monospace;"></div>
             
             <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; cursor:pointer;">
                 <i class="fas fa-save"></i> حفظ في سجل المعاينات
@@ -143,11 +158,10 @@
     </div>
 
     <div class="box">
-        <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--primary);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
-        
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--accent);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
         <div id="adminTabs" style="display:none; margin-bottom:15px; text-align: center;">
-            <button onclick="view='my';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
-            <button onclick="view='all';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
+            <button onclick="view='my';render()" style="border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.1); color:white; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
+            <button onclick="view='all';render()" style="border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.1); color:white; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
         </div>
         <div id="logList"></div>
     </div>
@@ -247,11 +261,11 @@
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
             <div class="log-item">
-                <i class="fas fa-trash-alt delete-btn" onclick="deleteLog(${l.id})"></i>
-                <div style="font-weight:bold; color:var(--primary); padding-left:25px;">📍 الموقع: ${l.title}</div>
-                <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">بواسطة: ${l.uName}</div>
+                <i class="fas fa-trash-alt" style="float:left; cursor:pointer; color:rgba(255,255,255,0.5);" onclick="deleteLog(${l.id})"></i>
+                <div style="font-weight:bold; color:var(--accent);">📍 الموقع: ${l.title}</div>
+                <div style="font-size:0.8rem; color:#cbd5e1; margin-bottom:5px;">بواسطة: ${l.uName}</div>
                 <div style="color:var(--danger); font-weight:bold; font-size:0.9rem;">🎯 البحث: ${l.res}</div>
-                <div style="font-size:0.75rem; color:#444; background:#eee; padding:5px; border-radius:5px; margin-top:5px;">${l.diff}</div>
+                <div style="font-size:0.75rem; color:#eee; background:rgba(0,0,0,0.3); padding:5px; border-radius:5px; margin-top:5px;">${l.diff}</div>
             </div>
         `).join('') || '<p style="text-align:center; color:#999;">لا توجد سجلات حالياً</p>';
     }
