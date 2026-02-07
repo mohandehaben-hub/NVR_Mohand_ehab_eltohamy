@@ -70,7 +70,11 @@
         .target-time { font-size: 2rem; font-weight: 900; color: var(--primary); margin-bottom: 20px; font-family: 'Courier New', monospace; }
 
         .call-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4); }
-        .log-item { background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid #e2e8f0; }
+        .log-item { position: relative; background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid #e2e8f0; }
+        .delete-btn { position: absolute; top: 10px; left: 10px; color: #cbd5e1; cursor: pointer; transition: 0.3s; }
+        .delete-btn:hover { color: var(--danger); }
+        .btn-clear-all { background: none; border: 1px solid var(--danger); color: var(--danger); padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; margin-right: 10px; }
+        .btn-clear-all:hover { background: var(--danger); color: white; }
     </style>
 </head>
 <body>
@@ -79,9 +83,9 @@
 
 <div id="loginOverlay">
     <div class="login-card">
-        <div style="font-size: 3.5rem; color: var(--accent);">🛡️</div>
+        <div style="font-size: 3.5rem; color: var(--accent);">👮🏻‍♂️</div>
         <h1 style="color:var(--accent); font-size:1.4rem; margin:10px 0;">التهامي للانظمه الامنيه المتقدمه </h1>
-        <p style="color:#94a3b8; font-size:0.8rem; margin-bottom: 20px;">التهامي للأنظمة الأمنية المتقدمة</p>
+        <p style="color:#94a3b8; font-size:0.8rem; margin-bottom: 20px;">حيث تنتهي الثغرات ويبدأ الردع 🦅👮🏻‍♂️</p>
         <input type="text" id="u" placeholder="اسم الضابط المسؤول ">
         <input type="password" id="p" placeholder="كلمة المرور">
         <button class="btn-login" onclick="login()">دخول النظام</button>
@@ -109,7 +113,7 @@
             <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" class="profile-img" alt="المهندس مهند">
         </div>
         
-        <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">م. مهند إيهاب التهامي</div>
+        <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">المهندس مهند إيهاب التهامي</div>
         <div id="clock" style="font-size: 1.5rem; margin-top: 5px; font-weight: 700; font-family: 'Courier New', monospace;">00:00:00</div>
     </div>
 
@@ -138,7 +142,11 @@
     </div>
 
     <div class="box">
-        <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--primary);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3 style="margin: 0; font-size: 1rem; color: var(--primary);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
+            <button class="btn-clear-all" onclick="clearAllLogs()">مسح الكل</button>
+        </div>
+        
         <div id="adminTabs" style="display:none; margin-bottom:15px; text-align: center;">
             <button onclick="view='my';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
             <button onclick="view='all';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
@@ -199,21 +207,14 @@
     function calculate() {
         const cam = get('camTime'), realTarget = get('realTime');
         const now = new Date();
-        
-        // الفارق بين وقت الكاميرا والوقت الحالي للموبايل
         const diffMs = now.getTime() - cam.getTime();
-        
-        // نقطة البحث = وقت الحادثة مطروح منه الفارق
         const res = new Date(realTarget.getTime() - diffMs);
-        
         const abs = Math.abs(diffMs), 
               d = Math.floor(abs/86400000), 
               h = Math.floor((abs%86400000)/3600000), 
               m = Math.floor((abs%3600000)/60000);
-        
         const status = diffMs > 0 ? "متأخر عن الحقيقة" : "متقدم عن الحقيقة";
         const analysis = `ساعة الـ DVR ${status} بمقدار [ ${d} يوم و ${h} ساعة و ${m} دقيقة ]`;
-        
         lastData = { res: res.toLocaleString('ar-EG'), diff: analysis };
         document.getElementById('resTime').innerText = res.toLocaleTimeString('ar-EG', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true});
         document.getElementById('fullAnalysis').innerText = analysis;
@@ -226,7 +227,7 @@
     }
 
     function save() {
-        const title = prompt("اسم موقع المعاينة (مثلاً: محل الذهب):"); if(!title) return;
+        const title = prompt("اسم موقع المعاينة (👮🏻‍♂️):"); if(!title) return;
         const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res, diff: lastData.diff };
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         logs.unshift(log); localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
@@ -234,12 +235,31 @@
         alert("تم حفظ المعاينة في الأرشيف");
     }
 
+    // --- وظائف الحذف المضافة ---
+    function deleteLog(id) {
+        if(confirm("هل أنت متأكد من حذف هذه المعاينة؟")) {
+            let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
+            logs = logs.filter(l => l.id !== id);
+            localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
+            render();
+        }
+    }
+
+    function clearAllLogs() {
+        if(confirm("تحذير: سيتم مسح جميع المعاينات المحفوظة نهائياً. هل تريد الاستمرار؟")) {
+            localStorage.setItem('eltohamy_logs_v1', '[]');
+            render();
+        }
+    }
+    // -------------------------
+
     function render() {
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
             <div class="log-item">
-                <div style="font-weight:bold; color:var(--primary);">📍 الموقع: ${l.title}</div>
+                <i class="fas fa-trash-alt delete-btn" onclick="deleteLog(${l.id})"></i>
+                <div style="font-weight:bold; color:var(--primary); padding-left:25px;">📍 الموقع: ${l.title}</div>
                 <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">بواسطة: ${l.uName}</div>
                 <div style="color:var(--danger); font-weight:bold; font-size:0.9rem;">🎯 البحث: ${l.res}</div>
                 <div style="font-size:0.75rem; color:#444; background:#eee; padding:5px; border-radius:5px; margin-top:5px;">${l.diff}</div>
