@@ -28,91 +28,77 @@
 
         #loginOverlay, #registerOverlay { 
             position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; 
-            background: rgba(2, 6, 23, 0.3); 
+            background: rgba(2, 6, 23, 0.2); 
             backdrop-filter: blur(8px);
         }
         
-        /* تضخيم بطاقة الدخول */
         .login-card { 
-            background: rgba(15, 23, 42, 0.92); 
+            background: rgba(15, 23, 42, 0.95); 
             backdrop-filter: blur(20px); 
-            padding: 50px 40px; 
-            border-radius: 40px; 
-            width: 95%; 
-            max-width: 500px; /* جعلها أعرض */
+            padding: 35px 25px; 
+            border-radius: 30px; 
+            width: 90%; 
+            max-width: 400px; /* المقاس المثالي */
             text-align: center; 
-            border: 2px solid rgba(251, 191, 36, 0.3); 
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8); 
+            border: 1px solid rgba(251, 191, 36, 0.4); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
         }
 
-        /* تكبير خانات الإدخال */
+        .dev-signature-main {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px dashed rgba(251, 191, 36, 0.3);
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+
         .login-card input { 
             width: 100%; 
-            padding: 20px; 
-            margin: 15px 0; 
-            border-radius: 18px; 
+            padding: 14px; 
+            margin: 10px 0; 
+            border-radius: 12px; 
             border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(0,0,0,0.6); 
+            background: rgba(0,0,0,0.5); 
             color: white; 
             text-align: center; 
             box-sizing: border-box; 
-            font-size: 1.1rem; 
         }
         
-        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 20px; border: none; border-radius: 18px; font-weight: 800; cursor: pointer; margin-top: 25px; transition: 0.3s; font-size: 1.2rem; }
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
         
-        .external-contact { display: flex; gap: 15px; margin-top: 25px; }
-        .btn-ext { flex: 1; padding: 15px; border-radius: 15px; text-decoration: none; font-size: 1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; color: white; transition: 0.3s; }
-
-        /* نص المطور الفخم */
-        .developer-signature {
-            color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            padding: 12px;
-            border: 1px dashed rgba(251, 191, 36, 0.4);
-            border-radius: 15px;
-            line-height: 1.6;
-            background: rgba(251, 191, 36, 0.05);
-        }
-
-        #app { display: none; padding: 30px 20px; max-width: 700px; margin: 0 auto; }
+        #app { display: none; padding: 25px 15px; max-width: 600px; margin: 0 auto; }
 
         .header-card { 
             background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(20px);
-            color: white; padding: 40px 25px; border-radius: 35px; text-align: center; 
-            margin-bottom: 30px; position: relative; border: 1px solid rgba(251, 191, 36, 0.5);
+            color: white; padding: 30px 20px; border-radius: 30px; text-align: center; 
+            margin-bottom: 25px; border: 1px solid rgba(251, 191, 36, 0.4);
         }
         
         .box { 
             background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
-            padding: 35px; border-radius: 30px; 
-            margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.15); color: white;
+            padding: 25px; border-radius: 25px; 
+            margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.1); color: white;
         }
 
-        /* تكبير خانات التاريخ والوقت */
-        .pick-row { display: flex; gap: 8px; margin: 15px 0 25px 0; flex-wrap: wrap; justify-content: center; }
+        .pick-row { display: flex; gap: 5px; margin: 10px 0 20px 0; }
         .pick-row select { 
             flex: 1; 
-            min-width: 70px; 
-            padding: 15px 5px; 
-            border-radius: 12px; 
+            padding: 12px 2px; 
+            border-radius: 10px; 
             background: #fff; 
-            color: #000; 
             font-weight: bold; 
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             border: 2px solid var(--accent);
-            cursor: pointer;
         }
 
-        .welcome-user { font-size: 1.1rem; color: var(--accent); margin-bottom: 15px; font-weight: bold; }
-        .dev-name { color: var(--accent); font-weight: 800; display: block; font-size: 1.1rem; margin-top: 5px; }
-        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 22px; border: none; border-radius: 20px; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 1.2rem; }
+        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: 900; cursor: pointer; font-size: 1.1rem; }
 
-        .fab-container { position: fixed; bottom: 35px; left: 35px; display: flex; flex-direction: column; gap: 20px; z-index: 1000; }
-        .fab { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
-        .bg-call { background: var(--success); }
+        .fab-container { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .fab { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .bg-wa { background: var(--whatsapp); }
+        .bg-call { background: var(--success); }
     </style>
 </head>
 <body>
@@ -124,81 +110,65 @@
 
 <div id="loginOverlay">
     <div class="login-card">
-        <div style="font-size: 4.5rem; margin-bottom: 10px;">🦅</div>
-        <h1 style="color:var(--accent); font-size:1.8rem; margin:10px 0;">التهامي للأنظمة الأمنية المتقدمة</h1>
+        <div style="font-size: 3.5rem;">🦅</div>
+        <h1 style="color:var(--accent); font-size:1.5rem; margin:10px 0;">التهامي للأنظمة الأمنية</h1>
         
-        <div class="developer-signature">
+        <div class="dev-signature-main">
             المطور: المهندس مهند إيهاب التهامي<br>
-            <span style="font-size: 0.75rem; opacity: 0.9;">خبير تطوير الأنظمة البرمجية والأمنية المتقدمة</span>
+            <span style="font-size: 0.7rem; opacity: 0.8;">خبير تطوير الأنظمة البرمجية والأمنية المتقدمة</span>
         </div>
 
-        <p style="color:#cbd5e1; font-size:1rem; margin-bottom: 25px;">حيث تنتهي الثغرات ويبدأ الردع 👮🏻‍♂️</p>
-        
         <input type="text" id="u" placeholder="اسم الضابط المسؤول">
         <input type="password" id="p" placeholder="كلمة المرور">
         <button class="btn-login" onclick="login()">دخول النظام</button>
         
-        <div class="external-contact">
-            <a href="tel:01021102607" class="btn-ext bg-call"><i class="fas fa-phone"></i> اتصل بنا</a>
-            <a href="https://wa.me/201021102607" class="btn-ext bg-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <a href="tel:01021102607" style="flex:1; background:var(--success); color:white; padding:10px; border-radius:10px; text-decoration:none; font-size:0.8rem; font-weight:bold;">اتصال</a>
+            <a href="https://wa.me/201021102607" style="flex:1; background:var(--whatsapp); color:white; padding:10px; border-radius:10px; text-decoration:none; font-size:0.8rem; font-weight:bold;">واتساب</a>
         </div>
-
-        <span style="color:var(--accent); cursor:pointer; display:block; margin-top:25px; text-decoration:underline; font-size: 0.9rem;" onclick="toggleReg(true)">طلب تصريح دخول لضابط جديد</span>
+        <span style="color:var(--accent); cursor:pointer; display:block; margin-top:20px; text-decoration:underline; font-size: 0.8rem;" onclick="toggleReg(true)">طلب تصريح دخول</span>
     </div>
 </div>
 
 <div id="registerOverlay" style="display:none;">
     <div class="login-card">
-        <h2 style="color:var(--accent);">طلب تصريح معاينة</h2>
-        <div class="developer-signature">
-            المطور: المهندس مهند إيهاب التهامي
-        </div>
+        <h2 style="color:var(--accent);">طلب تصريح جديد</h2>
         <input type="text" id="regName" placeholder="الاسم الرباعي">
         <input type="text" id="regUser" placeholder="اسم المستخدم المطلوب">
         <button class="btn-login" style="background:var(--success); color:white;" onclick="sendRequest()">إرسال للمهندس مهند</button>
-        <span style="color:#cbd5e1; cursor:pointer; display:block; margin-top:25px;" onclick="toggleReg(false)">العودة للخلف</span>
+        <span style="color:#cbd5e1; cursor:pointer; display:block; margin-top:20px;" onclick="toggleReg(false)">رجوع</span>
     </div>
 </div>
 
 <div id="app">
     <div class="header-card">
-        <div id="welcomeMsg" class="welcome-user"></div>
-        <span id="role" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #000; padding: 8px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800;"></span>
-        <div onclick="location.reload()" style="position:absolute; top:20px; left:20px; cursor:pointer; opacity:0.7;"><i class="fas fa-power-off fa-lg"></i></div>
-        
-        <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 20px;">
-            <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" style="width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--accent); object-fit: cover;" alt="المهندس مهند">
+        <div id="welcomeMsg" style="color:var(--accent); font-weight:bold; margin-bottom:10px;"></div>
+        <div style="position: relative; width: 90px; height: 90px; margin: 0 auto 15px;">
+            <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" style="width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover;">
         </div>
-        
-        <div class="dev-name">المهندس مهند إيهاب التهامي</div>
-        <div id="clock" style="font-size: 1.8rem; margin-top: 15px; font-weight: 900; font-family: 'Courier New', monospace; color: var(--accent);">00:00:00</div>
+        <div style="font-weight: 800; color: var(--accent);">المهندس مهند إيهاب التهامي</div>
+        <div id="clock" style="font-size: 1.5rem; margin-top: 10px; font-weight: 900; font-family: monospace; color: var(--accent);">00:00:00</div>
     </div>
 
     <div class="box">
-        <label style="color: var(--accent); font-weight: bold;"><i class="fas fa-video"></i> 1. توقيت جهاز الـ DVR:</label>
+        <label><i class="fas fa-video"></i> توقيت الـ DVR الظاهر:</label>
         <div class="pick-row" id="camTime"></div>
 
-        <label style="color: var(--accent); font-weight: bold;"><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة الحقيقي:</label>
+        <label><i class="fas fa-stopwatch"></i> توقيت الواقعة الحقيقي:</label>
         <div class="pick-row" id="realTime"></div>
 
-        <button class="btn-calc" onclick="calculate()">
-            <i class="fas fa-sync-alt"></i> معالجة البيانات واستخراج الفارق
-        </button>
+        <button class="btn-calc" onclick="calculate()">معالجة البيانات</button>
 
-        <div id="result" style="background: #fff; color: #000; padding: 30px; border-radius: 30px; text-align: center; margin-top: 30px; display: none; border: 3px solid var(--accent);">
-            <div id="fullAnalysis" style="font-weight: bold; margin-bottom: 15px;"></div>
-            <div style="color: var(--danger); font-weight: 900; font-size: 1.2rem;">🎯 وقت البحث المستهدف:</div>
-            <div id="resTime" style="font-size: 2.5rem; font-weight: 900; font-family: 'Courier New';"></div>
-            <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:15px; border-radius:15px; margin-top:15px; cursor:pointer; font-weight:bold;">حفظ المعاينة</button>
+        <div id="result" style="background: #fff; color: #000; padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px; display: none; border: 3px solid var(--accent);">
+            <div id="fullAnalysis" style="font-size:0.8rem; margin-bottom:10px;"></div>
+            <div style="color: var(--danger); font-weight: bold;">🎯 نقطة البحث المستهدفة:</div>
+            <div id="resTime" style="font-size: 2rem; font-weight: 900;"></div>
+            <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:12px; border-radius:10px; margin-top:10px; cursor:pointer;">حفظ</button>
         </div>
     </div>
 
     <div class="box">
-        <h3 style="color:var(--accent); margin-bottom:20px;"><i class="fas fa-history"></i> الأرشيف</h3>
-        <div id="adminTabs" style="display:none; margin-bottom:20px; text-align: center;">
-            <button onclick="view='my';render()" style="background:none; border:1px solid #fff; color:#fff; padding:8px 15px; border-radius:8px; cursor:pointer;">سجلاتي</button>
-            <button onclick="view='all';render()" style="background:none; border:1px solid #fff; color:#fff; padding:8px 15px; border-radius:8px; cursor:pointer;">الكل</button>
-        </div>
+        <h3 style="color:var(--accent); margin:0 0 15px 0;">الأرشيف</h3>
         <div id="logList"></div>
     </div>
 </div>
@@ -206,12 +176,10 @@
 <script>
     const users = [
         { id: "Eltohamy", pass: "551855125500", name: "المهندس مهند التهامي", role: "admin" },
-        { id: "Moheb", pass: "0102030", name: "مهيب", role: "user" },
-        { id: "Elhgrasy", pass: "203010", name: "الهجراسي", role: "user" },
-        { id: "Bahe", pass: "55185512", name: "باهي", role: "user" }
+        { id: "Moheb", pass: "0102030", name: "مهيب", role: "user" }
     ];
 
-    let current = null, view = 'my', lastData = {};
+    let current = null, lastData = {};
 
     function toggleReg(s) { document.getElementById('loginOverlay').style.display=s?'none':'flex'; document.getElementById('registerOverlay').style.display=s?'flex':'none'; }
     
@@ -228,10 +196,8 @@
             document.getElementById('loginOverlay').style.display = 'none';
             document.getElementById('app').style.display = 'block';
             document.getElementById('welcomeMsg').innerText = "مرحباً: " + current.name;
-            document.getElementById('role').innerText = current.role === 'admin' ? "المدير العام" : "الضابط المسؤول";
-            if(current.role === 'admin') document.getElementById('adminTabs').style.display = 'block';
             start();
-        } else { alert("خطأ في البيانات"); }
+        } else { alert("بيانات خاطئة"); }
     }
 
     function start() {
@@ -243,9 +209,9 @@
     function build(id) {
         const el = document.getElementById(id), n = new Date();
         el.innerHTML = `
-            <select class="y">${o(2020,2030,n.getFullYear())}</select>
-            <select class="m">${o(1,12,n.getMonth()+1)}</select>
             <select class="d">${o(1,31,n.getDate())}</select>
+            <select class="m">${o(1,12,n.getMonth()+1)}</select>
+            <select class="y">${o(2024,2030,n.getFullYear())}</select>
             <select class="h">${o(0,23,n.getHours())}</select>
             <select class="i">${o(0,59,n.getMinutes())}</select>
         `;
@@ -256,9 +222,9 @@
         const cam = get('camTime'), realTarget = get('realTime');
         const diffMs = new Date().getTime() - cam.getTime();
         const res = new Date(realTarget.getTime() - diffMs);
-        lastData = { res: res.toLocaleString('ar-EG'), diff: "تم حساب الفارق الزمني بدقة" };
+        lastData = { res: res.toLocaleString('ar-EG') };
         document.getElementById('resTime').innerText = res.toLocaleTimeString('ar-EG');
-        document.getElementById('fullAnalysis').innerText = "تمت معالجة الفارق بين ساعة DVR والوقت الحقيقي";
+        document.getElementById('fullAnalysis').innerText = "تم حساب الفارق ومعالجة التوقيت";
         document.getElementById('result').style.display = 'block';
     }
 
@@ -268,20 +234,18 @@
     }
 
     function save() {
-        const title = prompt("اسم موقع المعاينة:"); if(!title) return;
-        const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res };
+        const title = prompt("موقع المعاينة:"); if(!title) return;
+        const log = { id: Date.now(), uName: current.name, title, res: lastData.res };
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         logs.unshift(log); localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
-        render(); alert("تم الحفظ");
+        render();
     }
 
     function render() {
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
-        if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
-            <div style="background:rgba(255,255,255,0.1); padding:15px; border-radius:15px; margin-bottom:10px; border-right:4px solid var(--accent);">
-                <div style="color:var(--accent); font-weight:bold;">📍 ${l.title}</div>
-                <div style="font-size:0.8rem;">البحث: ${l.res}</div>
+            <div style="background:rgba(255,255,255,0.1); padding:10px; border-radius:10px; margin-bottom:10px; border-right:3px solid var(--accent); font-size:0.8rem;">
+                <b>📍 ${l.title}</b><br>البحث: ${l.res}
             </div>
         `).join('') || '<p>لا توجد سجلات</p>';
     }
