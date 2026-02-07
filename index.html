@@ -197,7 +197,7 @@
         el.innerHTML = `
             <select class="d">${o(1,31,n.getDate())}</select>
             <select class="m">${o(1,12,n.getMonth()+1)}</select>
-            <select class="y">${o(2020,2030,n.getFullYear())}</select>
+            <select class="y">${o(2000,2200,n.getFullYear())}</select>
             <select class="h">${o(0,23,n.getHours())}</select>
             <select class="i">${o(0,59,n.getMinutes())}</select>
         `;
@@ -235,7 +235,6 @@
         alert("تم حفظ المعاينة في الأرشيف");
     }
 
-    // --- وظائف الحذف المضافة ---
     function deleteLog(id) {
         if(confirm("هل أنت متأكد من حذف هذه المعاينة؟")) {
             let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
@@ -251,7 +250,6 @@
             render();
         }
     }
-    // -------------------------
 
     function render() {
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
