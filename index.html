@@ -18,7 +18,6 @@
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             margin: 0; padding: 0; color: var(--text-light);
-            /* الخلفية الآن ظاهرة بوضوح مع طبقة تعتيم خفيفة جداً */
             background: linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.4)), 
                         url('https://i.postimg.cc/9Xq262b6/c6fd2a0e-609d-4da7-a03d-ce2d4d6f3d11.jpg');
             background-size: cover;
@@ -29,73 +28,113 @@
 
         #loginOverlay, #registerOverlay { 
             position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 9999; 
-            background: rgba(2, 6, 23, 0.2); 
-            backdrop-filter: blur(5px);
+            background: rgba(2, 6, 23, 0.3); 
+            backdrop-filter: blur(8px);
         }
         
-        .login-card { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .login-card input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; text-align: center; box-sizing: border-box; }
-        
-        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        
-        /* أزرار التواصل في الخارج */
-        .external-contact { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-ext { flex: 1; padding: 10px; border-radius: 10px; text-decoration: none; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; color: white; }
-        .bg-call { background: var(--success); }
-        .bg-wa { background: var(--whatsapp); }
+        /* تضخيم بطاقة الدخول */
+        .login-card { 
+            background: rgba(15, 23, 42, 0.92); 
+            backdrop-filter: blur(20px); 
+            padding: 50px 40px; 
+            border-radius: 40px; 
+            width: 95%; 
+            max-width: 500px; /* جعلها أعرض */
+            text-align: center; 
+            border: 2px solid rgba(251, 191, 36, 0.3); 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8); 
+        }
 
-        #app { display: none; padding: 20px; max-width: 600px; margin: 0 auto; }
+        /* تكبير خانات الإدخال */
+        .login-card input { 
+            width: 100%; 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 18px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(0,0,0,0.6); 
+            color: white; 
+            text-align: center; 
+            box-sizing: border-box; 
+            font-size: 1.1rem; 
+        }
+        
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 20px; border: none; border-radius: 18px; font-weight: 800; cursor: pointer; margin-top: 25px; transition: 0.3s; font-size: 1.2rem; }
+        
+        .external-contact { display: flex; gap: 15px; margin-top: 25px; }
+        .btn-ext { flex: 1; padding: 15px; border-radius: 15px; text-decoration: none; font-size: 1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; color: white; transition: 0.3s; }
 
-        /* تعديل الهيدر والمربعات لتكون شفافة وتظهر الخلفية */
+        /* نص المطور الفخم */
+        .developer-signature {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            padding: 12px;
+            border: 1px dashed rgba(251, 191, 36, 0.4);
+            border-radius: 15px;
+            line-height: 1.6;
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        #app { display: none; padding: 30px 20px; max-width: 700px; margin: 0 auto; }
+
         .header-card { 
-            background: rgba(2, 6, 23, 0.6); backdrop-filter: blur(15px);
-            color: white; padding: 30px 20px; border-radius: 30px; text-align: center; 
-            margin-bottom: 25px; position: relative; border: 1px solid rgba(251, 191, 36, 0.4);
+            background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(20px);
+            color: white; padding: 40px 25px; border-radius: 35px; text-align: center; 
+            margin-bottom: 30px; position: relative; border: 1px solid rgba(251, 191, 36, 0.5);
         }
         
         .box { 
-            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
-            padding: 25px; border-radius: 25px; 
-            margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.2); color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+            padding: 35px; border-radius: 30px; 
+            margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.15); color: white;
         }
 
-        .box label { color: var(--accent); }
-        .box select { background: rgba(255,255,255,0.9); }
+        /* تكبير خانات التاريخ والوقت */
+        .pick-row { display: flex; gap: 8px; margin: 15px 0 25px 0; flex-wrap: wrap; justify-content: center; }
+        .pick-row select { 
+            flex: 1; 
+            min-width: 70px; 
+            padding: 15px 5px; 
+            border-radius: 12px; 
+            background: #fff; 
+            color: #000; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            border: 2px solid var(--accent);
+            cursor: pointer;
+        }
 
-        .welcome-user { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: bold; }
-        .profile-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
-        
-        /* التوقيع الخاص بك */
-        .dev-credit { font-size: 0.75rem; color: #cbd5e1; margin-top: 8px; font-style: italic; }
+        .welcome-user { font-size: 1.1rem; color: var(--accent); margin-bottom: 15px; font-weight: bold; }
+        .dev-name { color: var(--accent); font-weight: 800; display: block; font-size: 1.1rem; margin-top: 5px; }
+        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 22px; border: none; border-radius: 20px; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 1.2rem; }
 
-        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-
-        .result-box { background: rgba(255, 255, 255, 0.95); color: #000; border: 2px solid var(--accent); padding: 25px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; }
-
-        /* أزرار التواصل العائمة */
-        .fab-container { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
-        .fab { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .fab-call { background: var(--success); }
-        .fab-wa { background: var(--whatsapp); }
-
-        .log-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 15px; border-radius: 15px; margin-bottom: 12px; color: white; }
+        .fab-container { position: fixed; bottom: 35px; left: 35px; display: flex; flex-direction: column; gap: 20px; z-index: 1000; }
+        .fab { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+        .bg-call { background: var(--success); }
+        .bg-wa { background: var(--whatsapp); }
     </style>
 </head>
 <body>
 
 <div class="fab-container">
-    <a href="https://wa.me/201021102607" class="fab fab-wa"><i class="fab fa-whatsapp"></i></a>
-    <a href="tel:01021102607" class="fab fab-call"><i class="fas fa-phone"></i></a>
+    <a href="https://wa.me/201021102607" class="fab bg-wa"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:01021102607" class="fab bg-call"><i class="fas fa-phone"></i></a>
 </div>
 
 <div id="loginOverlay">
     <div class="login-card">
-        <div style="font-size: 3.5rem; color: var(--accent);">👮🏻‍♂️</div>
-        <h1 style="color:var(--accent); font-size:1.4rem; margin:10px 0;">التهامي للانظمه الامنيه المتقدمه </h1>
-        <p style="color:#94a3b8; font-size:0.8rem; margin-bottom: 20px;">حيث تنتهي الثغرات ويبدأ الردع 🦅👮🏻‍♂️</p>
-        <input type="text" id="u" placeholder="اسم الضابط المسؤول ">
+        <div style="font-size: 4.5rem; margin-bottom: 10px;">🦅</div>
+        <h1 style="color:var(--accent); font-size:1.8rem; margin:10px 0;">التهامي للأنظمة الأمنية المتقدمة</h1>
+        
+        <div class="developer-signature">
+            المطور: المهندس مهند إيهاب التهامي<br>
+            <span style="font-size: 0.75rem; opacity: 0.9;">خبير تطوير الأنظمة البرمجية والأمنية المتقدمة</span>
+        </div>
+
+        <p style="color:#cbd5e1; font-size:1rem; margin-bottom: 25px;">حيث تنتهي الثغرات ويبدأ الردع 👮🏻‍♂️</p>
+        
+        <input type="text" id="u" placeholder="اسم الضابط المسؤول">
         <input type="password" id="p" placeholder="كلمة المرور">
         <button class="btn-login" onclick="login()">دخول النظام</button>
         
@@ -104,64 +143,61 @@
             <a href="https://wa.me/201021102607" class="btn-ext bg-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
         </div>
 
-        <span style="color:var(--accent); cursor:pointer; display:block; margin-top:20px; text-decoration:underline; font-size: 0.8rem;" onclick="toggleReg(true)">طلب تصريح دخول لضابط جديد</span>
+        <span style="color:var(--accent); cursor:pointer; display:block; margin-top:25px; text-decoration:underline; font-size: 0.9rem;" onclick="toggleReg(true)">طلب تصريح دخول لضابط جديد</span>
     </div>
 </div>
 
 <div id="registerOverlay" style="display:none;">
     <div class="login-card">
         <h2 style="color:var(--accent);">طلب تصريح معاينة</h2>
+        <div class="developer-signature">
+            المطور: المهندس مهند إيهاب التهامي
+        </div>
         <input type="text" id="regName" placeholder="الاسم الرباعي">
         <input type="text" id="regUser" placeholder="اسم المستخدم المطلوب">
         <button class="btn-login" style="background:var(--success); color:white;" onclick="sendRequest()">إرسال للمهندس مهند</button>
-        <span style="color:#94a3b8; cursor:pointer; display:block; margin-top:20px;" onclick="toggleReg(false)">العودة للخلف</span>
+        <span style="color:#cbd5e1; cursor:pointer; display:block; margin-top:25px;" onclick="toggleReg(false)">العودة للخلف</span>
     </div>
 </div>
 
 <div id="app">
     <div class="header-card">
         <div id="welcomeMsg" class="welcome-user"></div>
-        <span id="role" class="badge" style="position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold;"></span>
-        <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity:0.6;"><i class="fas fa-power-off"></i></div>
+        <span id="role" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #000; padding: 8px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800;"></span>
+        <div onclick="location.reload()" style="position:absolute; top:20px; left:20px; cursor:pointer; opacity:0.7;"><i class="fas fa-power-off fa-lg"></i></div>
         
-        <div class="profile-container">
-            <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" class="profile-img" alt="المهندس مهند">
+        <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 20px;">
+            <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" style="width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--accent); object-fit: cover;" alt="المهندس مهند">
         </div>
         
-        <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">المهندس مهند إيهاب التهامي</div>
-        <div class="dev-credit">تم تطوير هذا النظام بواسطة المهندس مهند التهامي</div>
-        <div id="clock" style="font-size: 1.5rem; margin-top: 10px; font-weight: 700; font-family: 'Courier New', monospace;">00:00:00</div>
+        <div class="dev-name">المهندس مهند إيهاب التهامي</div>
+        <div id="clock" style="font-size: 1.8rem; margin-top: 15px; font-weight: 900; font-family: 'Courier New', monospace; color: var(--accent);">00:00:00</div>
     </div>
 
     <div class="box">
-        <label><i class="fas fa-video"></i> 1. توقيت الجهاز (DVR) الظاهر على الشاشة:</label>
+        <label style="color: var(--accent); font-weight: bold;"><i class="fas fa-video"></i> 1. توقيت جهاز الـ DVR:</label>
         <div class="pick-row" id="camTime"></div>
 
-        <label><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة (الحقيقي):</label>
+        <label style="color: var(--accent); font-weight: bold;"><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة الحقيقي:</label>
         <div class="pick-row" id="realTime"></div>
 
         <button class="btn-calc" onclick="calculate()">
             <i class="fas fa-sync-alt"></i> معالجة البيانات واستخراج الفارق
         </button>
 
-        <div id="result" class="result-box">
-            <div class="analysis-label" style="font-size: 0.85rem; color: #64748b; margin-bottom: 5px;">⚠️ الفارق الزمني المرصود:</div>
-            <div id="fullAnalysis" style="font-weight: bold; color: #000; margin-bottom: 20px; font-size: 1rem;"></div>
-
-            <div class="target-label" style="font-weight: bold; color: var(--danger); margin-bottom: 8px; font-size: 1.1rem;">🎯 نقطة البحث المستهدفة:</div>
-            <div id="resTime" style="font-size: 2rem; font-weight: 900; color: #000; margin-bottom: 20px; font-family: 'Courier New', monospace;"></div>
-            
-            <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; cursor:pointer;">
-                <i class="fas fa-save"></i> حفظ في سجل المعاينات
-            </button>
+        <div id="result" style="background: #fff; color: #000; padding: 30px; border-radius: 30px; text-align: center; margin-top: 30px; display: none; border: 3px solid var(--accent);">
+            <div id="fullAnalysis" style="font-weight: bold; margin-bottom: 15px;"></div>
+            <div style="color: var(--danger); font-weight: 900; font-size: 1.2rem;">🎯 وقت البحث المستهدف:</div>
+            <div id="resTime" style="font-size: 2.5rem; font-weight: 900; font-family: 'Courier New';"></div>
+            <button onclick="save()" style="width:100%; background: var(--primary); color:white; border:none; padding:15px; border-radius:15px; margin-top:15px; cursor:pointer; font-weight:bold;">حفظ المعاينة</button>
         </div>
     </div>
 
     <div class="box">
-        <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--accent);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
-        <div id="adminTabs" style="display:none; margin-bottom:15px; text-align: center;">
-            <button onclick="view='my';render()" style="border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.1); color:white; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
-            <button onclick="view='all';render()" style="border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.1); color:white; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
+        <h3 style="color:var(--accent); margin-bottom:20px;"><i class="fas fa-history"></i> الأرشيف</h3>
+        <div id="adminTabs" style="display:none; margin-bottom:20px; text-align: center;">
+            <button onclick="view='my';render()" style="background:none; border:1px solid #fff; color:#fff; padding:8px 15px; border-radius:8px; cursor:pointer;">سجلاتي</button>
+            <button onclick="view='all';render()" style="background:none; border:1px solid #fff; color:#fff; padding:8px 15px; border-radius:8px; cursor:pointer;">الكل</button>
         </div>
         <div id="logList"></div>
     </div>
@@ -180,7 +216,7 @@
     function toggleReg(s) { document.getElementById('loginOverlay').style.display=s?'none':'flex'; document.getElementById('registerOverlay').style.display=s?'flex':'none'; }
     
     function sendRequest() {
-        const msg = `طلب تصريح دخول للمنصة:%0Aالاسم: ${document.getElementById('regName').value}%0Aاليوزر المطلوب: ${document.getElementById('regUser').value}`;
+        const msg = `طلب تصريح دخول لـ ${document.getElementById('regName').value}`;
         window.open(`https://wa.me/201021102607?text=${msg}`);
     }
 
@@ -195,7 +231,7 @@
             document.getElementById('role').innerText = current.role === 'admin' ? "المدير العام" : "الضابط المسؤول";
             if(current.role === 'admin') document.getElementById('adminTabs').style.display = 'block';
             start();
-        } else { alert("بيانات الدخول غير صحيحة"); }
+        } else { alert("خطأ في البيانات"); }
     }
 
     function start() {
@@ -207,9 +243,9 @@
     function build(id) {
         const el = document.getElementById(id), n = new Date();
         el.innerHTML = `
-            <select class="d">${o(1,31,n.getDate())}</select>
+            <select class="y">${o(2020,2030,n.getFullYear())}</select>
             <select class="m">${o(1,12,n.getMonth()+1)}</select>
-            <select class="y">${o(2000,2200,n.getFullYear())}</select>
+            <select class="d">${o(1,31,n.getDate())}</select>
             <select class="h">${o(0,23,n.getHours())}</select>
             <select class="i">${o(0,59,n.getMinutes())}</select>
         `;
@@ -218,18 +254,11 @@
 
     function calculate() {
         const cam = get('camTime'), realTarget = get('realTime');
-        const now = new Date();
-        const diffMs = now.getTime() - cam.getTime();
+        const diffMs = new Date().getTime() - cam.getTime();
         const res = new Date(realTarget.getTime() - diffMs);
-        const abs = Math.abs(diffMs), 
-              d = Math.floor(abs/86400000), 
-              h = Math.floor((abs%86400000)/3600000), 
-              m = Math.floor((abs%3600000)/60000);
-        const status = diffMs > 0 ? "متأخر عن الحقيقة" : "متقدم عن الحقيقة";
-        const analysis = `ساعة الـ DVR ${status} بمقدار [ ${d} يوم و ${h} ساعة و ${m} دقيقة ]`;
-        lastData = { res: res.toLocaleString('ar-EG'), diff: analysis };
-        document.getElementById('resTime').innerText = res.toLocaleTimeString('ar-EG', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true});
-        document.getElementById('fullAnalysis').innerText = analysis;
+        lastData = { res: res.toLocaleString('ar-EG'), diff: "تم حساب الفارق الزمني بدقة" };
+        document.getElementById('resTime').innerText = res.toLocaleTimeString('ar-EG');
+        document.getElementById('fullAnalysis').innerText = "تمت معالجة الفارق بين ساعة DVR والوقت الحقيقي";
         document.getElementById('result').style.display = 'block';
     }
 
@@ -239,35 +268,22 @@
     }
 
     function save() {
-        const title = prompt("اسم موقع المعاينة (👮🏻‍♂️):"); if(!title) return;
-        const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res, diff: lastData.diff };
+        const title = prompt("اسم موقع المعاينة:"); if(!title) return;
+        const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res };
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         logs.unshift(log); localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
-        render();
-        alert("تم حفظ المعاينة في الأرشيف");
-    }
-
-    function deleteLog(id) {
-        if(confirm("هل أنت متأكد من حذف هذه المعاينة؟")) {
-            let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
-            logs = logs.filter(l => l.id !== id);
-            localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
-            render();
-        }
+        render(); alert("تم الحفظ");
     }
 
     function render() {
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
-            <div class="log-item">
-                <i class="fas fa-trash-alt" style="float:left; cursor:pointer; color:rgba(255,255,255,0.5);" onclick="deleteLog(${l.id})"></i>
-                <div style="font-weight:bold; color:var(--accent);">📍 الموقع: ${l.title}</div>
-                <div style="font-size:0.8rem; color:#cbd5e1; margin-bottom:5px;">بواسطة: ${l.uName}</div>
-                <div style="color:var(--danger); font-weight:bold; font-size:0.9rem;">🎯 البحث: ${l.res}</div>
-                <div style="font-size:0.75rem; color:#eee; background:rgba(0,0,0,0.3); padding:5px; border-radius:5px; margin-top:5px;">${l.diff}</div>
+            <div style="background:rgba(255,255,255,0.1); padding:15px; border-radius:15px; margin-bottom:10px; border-right:4px solid var(--accent);">
+                <div style="color:var(--accent); font-weight:bold;">📍 ${l.title}</div>
+                <div style="font-size:0.8rem;">البحث: ${l.res}</div>
             </div>
-        `).join('') || '<p style="text-align:center; color:#999;">لا توجد سجلات حالياً</p>';
+        `).join('') || '<p>لا توجد سجلات</p>';
     }
 </script>
 </body>
