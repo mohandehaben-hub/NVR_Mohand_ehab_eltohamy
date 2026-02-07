@@ -12,9 +12,8 @@
             --text-light: #f8fafc; 
             --danger: #ef4444; 
             --success: #10b981; 
-            --glass: rgba(15, 23, 42, 0.7);
-            --glass-border: rgba(251, 191, 36, 0.3);
-            --input-dark: #070b14;
+            --glass: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(251, 191, 36, 0.2);
         }
 
         body { 
@@ -24,6 +23,7 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             min-height: 100vh;
+            display: flex; flex-direction: column;
         }
 
         @keyframes gradientBG {
@@ -32,97 +32,63 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* الهيدر المطور */
+        /* بصمة المطور */
+        .dev-signature {
+            font-size: 0.7rem;
+            color: rgba(251, 191, 36, 0.6);
+            padding: 15px;
+            text-align: center;
+            line-height: 1.5;
+            z-index: 10;
+        }
+
+        #loginOverlay, #registerOverlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; background: rgba(2, 6, 23, 0.98); }
+        .login-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); padding: 30px; border-radius: 30px; width: 85%; max-width: 380px; text-align: center; border: 1px solid var(--glass-border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .login-card input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; text-align: center; box-sizing: border-box; }
+        
+        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 14px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        
+        #app { display: none; padding: 15px; max-width: 500px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+
         .header-card { 
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 1) 100%);
-            backdrop-filter: blur(20px);
-            padding: 30px 20px; 
-            border-radius: 0 0 40px 40px; 
-            text-align: center; 
-            margin-bottom: 25px; 
-            border-bottom: 3px solid var(--accent);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-
-        .dev-badge-top {
-            font-size: 0.65rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: block;
-            opacity: 0.9;
-            font-weight: 800;
+            background: var(--glass); backdrop-filter: blur(15px);
+            padding: 20px; border-radius: 25px; text-align: center; 
+            margin-bottom: 20px; border: 1px solid var(--glass-border);
         }
         
-        .profile-img { 
-            width: 95px; height: 95px; 
-            border-radius: 50%; 
-            border: 3px solid var(--accent); 
-            object-fit: cover; 
-            margin: 10px 0;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
-        }
-
-        /* كرت تسجيل الدخول */
-        #loginOverlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; background: rgba(2, 6, 23, 0.98); }
-        .login-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 85%; max-width: 380px; text-align: center; border: 1px solid var(--glass-border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .profile-img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; margin-bottom: 10px; }
         
-        .login-card input { 
-            width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            background: var(--input-dark); color: white; text-align: center; box-sizing: border-box; 
-        }
-        
-        .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        
-        .contact-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
-        .btn-contact { flex: 1; padding: 12px; border-radius: 12px; font-size: 0.8rem; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; color: white; }
-        .btn-call { background: var(--success); }
-        .btn-wa { background: #25d366; }
-
-        /* الأبلكيشن الرئيسي */
-        #app { display: none; padding: 0 15px 30px 15px; max-width: 500px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-
         .box { 
-            background: var(--glass); backdrop-filter: blur(15px); padding: 25px; border-radius: 30px; 
+            background: var(--glass); backdrop-filter: blur(10px); padding: 20px; border-radius: 25px; 
             margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
 
-        label { display: block; margin-bottom: 12px; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--accent); font-size: 0.85rem; opacity: 0.9; }
         
-        /* ضبط خانات التاريخ والعيدان */
-        .pick-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
+        /* تصميم الخانات الزجاجي الصغير */
+        .pick-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-bottom: 15px; }
         
         select { 
-            width: 100%; padding: 12px 2px; border-radius: 12px; 
-            border: 1.5px solid rgba(251, 191, 36, 0.2); 
-            background: var(--input-dark); 
-            color: #fff; font-size: 0.9rem; font-weight: bold;
+            width: 100%; padding: 8px 2px; border-radius: 10px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            background: rgba(255, 255, 255, 0.05); 
+            color: white; font-size: 0.8rem; font-weight: bold;
             text-align: center; appearance: none; cursor: pointer;
-            transition: all 0.3s ease;
         }
-        select:focus { 
-            border-color: var(--accent); 
-            box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
-            outline: none;
-            background: #000;
-        }
+        select:focus { border-color: var(--accent); background: rgba(251, 191, 36, 0.1); outline: none; }
 
-        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 16px; border: none; border-radius: 18px; font-weight: 900; cursor: pointer; transition: 0.4s; font-size: 1rem; text-transform: uppercase; }
-        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3); }
+        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; }
 
-        .result-box { background: rgba(0, 0, 0, 0.4); border: 2px solid var(--accent); padding: 20px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; }
+        .result-box { background: rgba(251, 191, 36, 0.05); border: 1.5px solid var(--accent); padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px; display: none; animation: fadeIn 0.5s; }
         
-        .target-time { font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 15px; font-family: 'Courier New', monospace; text-shadow: 0 0 15px rgba(251, 191, 36, 0.5); }
+        .target-time { font-size: 1.8rem; font-weight: 900; color: white; margin-bottom: 15px; font-family: 'Courier New', monospace; }
 
-        .call-fab { position: fixed; bottom: 25px; left: 25px; width: 55px; height: 55px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 1000; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); font-size: 1.4rem; }
+        .call-fab { position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 1000; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); }
         
-        .badge { background: var(--accent); color: #000; padding: 6px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; position: absolute; top: 20px; right: 20px; }
+        .log-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 15px; margin-bottom: 10px; border-right: 4px solid var(--accent); position: relative; }
+        .delete-btn { position: absolute; top: 10px; left: 10px; color: rgba(255,255,255,0.2); }
 
-        .card-signature { font-size: 0.65rem; color: var(--accent); margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(251, 191, 36, 0.1); opacity: 0.8; line-height: 1.5; }
+        .badge { background: var(--accent); color: #000; padding: 4px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: bold; position: absolute; top: 15px; right: 15px; }
     </style>
 </head>
 <body>
@@ -131,76 +97,73 @@
 
 <div id="loginOverlay">
     <div class="login-card">
-        <div style="font-size: 3.5rem; color: var(--accent); margin-bottom: 10px;">👮🏻‍♂️</div>
-        <h1 style="color:var(--accent); font-size:1.4rem; margin:0;">التهامي للأنظمة الأمنية</h1>
-        <p style="color:#94a3b8; font-size:0.75rem; margin: 8px 0 25px 0;">خبير تطوير النظم الأمنية المتقدمة</p>
-        
-        <input type="text" id="u" placeholder="اسم المستخدم">
+        <div style="font-size: 3rem; color: var(--accent);">👮🏻‍♂️</div>
+        <h1 style="color:var(--accent); font-size:1.2rem; margin:10px 0;">التهامي للانظمه الامنيه المتقدمه</h1>
+        <p style="color:#94a3b8; font-size:0.75rem; margin-bottom: 20px;">حيث تنتهي الثغرات ويبدأ الردع 🦅</p>
+        <input type="text" id="u" placeholder="اسم الضابط المسؤول">
         <input type="password" id="p" placeholder="كلمة المرور">
-        <button class="btn-login" onclick="login()">دخول النظام الأمن</button>
-        
-        <div class="contact-actions">
-            <a href="tel:01021102607" class="btn-contact btn-call"><i class="fas fa-phone-alt"></i> اتصال</a>
-            <a href="https://wa.me/201021102607" class="btn-contact btn-wa"><i class="fab fa-whatsapp"></i> واتساب</a>
-        </div>
+        <button class="btn-login" onclick="login()">دخول النظام</button>
+        <span style="color:var(--accent); cursor:pointer; display:block; margin-top:15px; text-decoration:underline; font-size: 0.75rem;" onclick="toggleReg(true)">طلب تصريح دخول جديد</span>
+    </div>
+    <div class="dev-signature">
+        المهندس مهند إيهاب التهامي  خبير تطوير النظم البرمجية وهندسة الحلول الأمنية المتقدمة 🛡️💻
+    </div>
+</div>
 
-        <div class="card-signature">
-            بصمة المطور: م/ مهند إيهاب التهامي 🛡️<br>
-            Security Systems Development Expert
-        </div>
+<div id="registerOverlay" style="display:none;">
+    <div class="login-card">
+        <h2 style="color:var(--accent); font-size: 1.1rem;">طلب تصريح معاينة</h2>
+        <input type="text" id="regName" placeholder="الاسم الرباعي">
+        <input type="text" id="regUser" placeholder="اسم المستخدم المطلوب">
+        <button class="btn-login" style="background:var(--success); color:white;" onclick="sendRequest()">إرسال للمهندس مهند</button>
+        <span style="color:#94a3b8; cursor:pointer; display:block; margin-top:20px; font-size: 0.8rem;" onclick="toggleReg(false)">العودة للخلف</span>
     </div>
 </div>
 
 <div id="app">
     <div class="header-card">
-        <span class="dev-badge-top">
-            <i class="fas fa-shield-alt"></i> المهندس مهند إيهاب التهامي | خبير تطوير النظم 💻
-        </span>
-        
         <span id="role" class="badge"></span>
-        <div onclick="location.reload()" style="position:absolute; top:20px; left:20px; cursor:pointer; color: var(--danger); font-size: 1.2rem;"><i class="fas fa-power-off"></i></div>
+        <div id="welcomeMsg" style="font-size: 0.8rem; color: var(--accent); margin-bottom: 10px;"></div>
+        <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity:0.4;"><i class="fas fa-power-off"></i></div>
         
         <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" class="profile-img">
-        <div style="font-size: 1.2rem; font-weight: 900; color: var(--accent); margin-top: 5px;">المهندس مهند التهامي</div>
-        <div id="clock" style="font-size: 1.4rem; margin-top: 10px; font-family: 'Courier New', monospace; color: #fff; background: rgba(255,255,255,0.05); display: inline-block; padding: 5px 20px; border-radius: 50px;">00:00:00</div>
+        <div style="font-size: 1rem; font-weight: 800; color: var(--accent);">المهندس مهند إيهاب التهامي</div>
+        <div id="clock" style="font-size: 1.2rem; margin-top: 5px; font-family: 'Courier New', monospace;">00:00:00</div>
     </div>
 
     <div class="box">
         <label><i class="fas fa-video"></i> 1. توقيت الجهاز (DVR) الحالي:</label>
         <div class="pick-row" id="camTime"></div>
 
-        <label><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة الحقيقي:</label>
+        <label><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة المراد بحثها:</label>
         <div class="pick-row" id="realTime"></div>
 
         <button class="btn-calc" onclick="calculate()">
-            <i class="fas fa-microchip"></i> معالجة البيانات الأمنية
+            <i class="fas fa-sync-alt"></i> معالجة البيانات
         </button>
 
         <div id="result" class="result-box">
-            <div style="font-size: 0.8rem; color: #cbd5e1; margin-bottom: 8px;">تحليل الفارق الزمني:</div>
-            <div id="fullAnalysis" style="color: var(--accent); font-size: 1rem; margin-bottom: 15px; font-weight: bold;"></div>
-            <div style="color: var(--danger); font-weight: bold; font-size: 1rem; margin-bottom: 8px;">🎯 وقت البحث على الـ DVR:</div>
+            <div style="font-size: 0.75rem; color: #cbd5e1; margin-bottom: 5px;">⚠️ الفارق الزمني:</div>
+            <div id="fullAnalysis" style="color: var(--accent); font-size: 0.85rem; margin-bottom: 15px; font-weight: bold;"></div>
+            <div style="color: var(--danger); font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">🎯 وقت البحث على الـ DVR:</div>
             <div id="resTime" class="target-time"></div>
-            <button onclick="save()" style="width:100%; background: var(--accent); color:#000; border:none; padding:15px; border-radius:15px; font-weight:bold; cursor:pointer; font-size: 0.9rem;">
-                <i class="fas fa-save"></i> تسجيل المعاينة في الأرشيف
+            <button onclick="save()" style="width:100%; background: var(--accent); color:#000; border:none; padding:12px; border-radius:10px; font-weight:bold; cursor:pointer; font-size: 0.85rem;">
+                <i class="fas fa-save"></i> حفظ المعاينة
             </button>
         </div>
     </div>
 
     <div class="box">
-        <h3 style="margin: 0 0 20px 0; font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-history"></i> أرشيف المعاينات
-        </h3>
-        <div id="adminTabs" style="display:none; margin-bottom:15px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
-            <button onclick="view='my';render()" style="background:none; border:none; color:white; cursor:pointer; font-weight:bold;">سجلاتي</button>
-            <span style="margin: 0 10px; color: var(--accent);">|</span>
-            <button onclick="view='all';render()" style="background:none; border:none; color:white; cursor:pointer; font-weight:bold;">رقابة النظام</button>
+        <h3 style="margin: 0 0 15px 0; font-size: 0.9rem; color: var(--accent);"><i class="fas fa-history"></i> الأرشيف</h3>
+        <div id="adminTabs" style="display:none; margin-bottom:12px; font-size: 0.8rem;">
+            <button onclick="view='my';render()" style="background:none; border:none; color:white; cursor:pointer;">سجلاتي</button> | 
+            <button onclick="view='all';render()" style="background:none; border:none; color:white; cursor:pointer;">الرقابة</button>
         </div>
         <div id="logList"></div>
     </div>
 
-    <div style="text-align: center; font-size: 0.7rem; color: #475569; margin-top: 20px;">
-        التهامي للأنظمة الأمنية المتقدمة © 2026
+    <div class="dev-signature">
+        المهندس مهند إيهاب التهامي  خبير تطوير النظم البرمجية وهندسة الحلول الأمنية المتقدمة 🛡️💻
     </div>
 </div>
 
@@ -214,6 +177,13 @@
 
     let current = null, view = 'my', lastData = {};
 
+    function toggleReg(s) { document.getElementById('loginOverlay').style.display=s?'none':'flex'; document.getElementById('registerOverlay').style.display=s?'flex':'none'; }
+    
+    function sendRequest() {
+        const msg = `طلب تصريح دخول للمنصة:%0Aالاسم: ${document.getElementById('regName').value}%0Aاليوزر المطلوب: ${document.getElementById('regUser').value}`;
+        window.open(`https://wa.me/201021102607?text=${msg}`);
+    }
+
     function login() {
         const u = document.getElementById('u').value, p = document.getElementById('p').value;
         const user = users.find(x => x.id === u && x.pass === p);
@@ -221,16 +191,15 @@
             current = user;
             document.getElementById('loginOverlay').style.display = 'none';
             document.getElementById('app').style.display = 'block';
-            document.getElementById('role').innerText = current.role === 'admin' ? "مدير النظام" : "ضابط مصرح";
+            document.getElementById('welcomeMsg').innerText = "مرحباً: " + current.name;
+            document.getElementById('role').innerText = current.role === 'admin' ? "مدير" : "ضابط";
             if(current.role === 'admin') document.getElementById('adminTabs').style.display = 'block';
             start();
-        } else { alert("بيانات الدخول غير صحيحة!"); }
+        } else { alert("خطأ في البيانات"); }
     }
 
     function start() {
-        setInterval(() => { 
-            document.getElementById('clock').innerText = new Date().toLocaleTimeString('ar-EG'); 
-        }, 1000);
+        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString('ar-EG'); }, 1000);
         build('camTime'); build('realTime');
         render();
     }
@@ -267,7 +236,7 @@
     }
 
     function save() {
-        const title = prompt("اسم موقع المعاينة:"); if(!title) return;
+        const title = prompt("اسم الموقع:"); if(!title) return;
         const log = { id: Date.now(), uId: current.id, uName: current.name, title, res: lastData.res, diff: lastData.diff };
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         logs.unshift(log); localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
@@ -275,7 +244,7 @@
     }
 
     function deleteLog(id) {
-        if(confirm("هل تريد حذف هذا السجل؟")) {
+        if(confirm("حذف؟")) {
             let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
             logs = logs.filter(l => l.id !== id);
             localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
@@ -287,14 +256,17 @@
         let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
         if(view === 'my') logs = logs.filter(l => l.uId === current.id);
         document.getElementById('logList').innerHTML = logs.map(l => `
-            <div class="log-item" style="background:rgba(255,255,255,0.03); padding:15px; border-radius:15px; margin-bottom:12px; border-right:4px solid var(--accent); position:relative;">
-                <i class="fas fa-trash-alt" style="position:absolute; top:15px; left:15px; color:var(--danger); opacity:0.6; cursor:pointer;" onclick="deleteLog(${l.id})"></i>
-                <div style="font-weight:bold; color:var(--accent); font-size:0.9rem; margin-bottom:5px;">📍 ${l.title}</div>
-                <div style="color:var(--danger); font-size:0.85rem; margin-bottom:5px;">🎯 البحث: ${l.res}</div>
-                <div style="font-size:0.7rem; opacity:0.8;">بواسطة: ${l.uName} | ${l.diff}</div>
+            <div class="log-item">
+                <i class="fas fa-trash-alt delete-btn" onclick="deleteLog(${l.id})"></i>
+                <div style="font-weight:bold; color:var(--accent); font-size:0.85rem;">📍 ${l.title}</div>
+                <div style="color:var(--danger); font-size:0.8rem; margin:5px 0;">🎯 البحث: ${l.res}</div>
+                <div style="font-size:0.7rem; opacity:0.7;">${l.diff}</div>
             </div>
-        `).join('') || '<p style="text-align:center; font-size:0.8rem; opacity:0.5;">لا توجد سجلات حالياً</p>';
+        `).join('') || '<p style="text-align:center; font-size:0.7rem; opacity:0.5;">لا يوجد سجلات</p>';
     }
 </script>
 </body>
 </html>
+
+ضيف في الكود ده زر اتصال و إرسال واتس اب في خانه تسجيل الدخول و كلمه المهندس مهند إيهاب التهامي  خبير تطوير النظم البرمجية وهندسة الحلول الأمنية المتقدمة 🛡️💻
+دي تكون موجوده في الهيدر و تكون موجوده في الكرت بتاع تسجيل الدخول زي بصمه 
