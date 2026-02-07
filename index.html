@@ -73,8 +73,6 @@
         .log-item { position: relative; background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid #e2e8f0; }
         .delete-btn { position: absolute; top: 10px; left: 10px; color: #cbd5e1; cursor: pointer; transition: 0.3s; }
         .delete-btn:hover { color: var(--danger); }
-        .btn-clear-all { background: none; border: 1px solid var(--danger); color: var(--danger); padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; margin-right: 10px; }
-        .btn-clear-all:hover { background: var(--danger); color: white; }
     </style>
 </head>
 <body>
@@ -142,10 +140,7 @@
     </div>
 
     <div class="box">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h3 style="margin: 0; font-size: 1rem; color: var(--primary);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
-            <button class="btn-clear-all" onclick="clearAllLogs()">مسح الكل</button>
-        </div>
+        <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--primary);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
         
         <div id="adminTabs" style="display:none; margin-bottom:15px; text-align: center;">
             <button onclick="view='my';render()" style="border:1px solid #ddd; background:#fff; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
@@ -240,13 +235,6 @@
             let logs = JSON.parse(localStorage.getItem('eltohamy_logs_v1') || '[]');
             logs = logs.filter(l => l.id !== id);
             localStorage.setItem('eltohamy_logs_v1', JSON.stringify(logs));
-            render();
-        }
-    }
-
-    function clearAllLogs() {
-        if(confirm("تحذير: سيتم مسح جميع المعاينات المحفوظة نهائياً. هل تريد الاستمرار؟")) {
-            localStorage.setItem('eltohamy_logs_v1', '[]');
             render();
         }
     }
