@@ -21,6 +21,8 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes gradientBG {
@@ -29,73 +31,75 @@
             100% { background-position: 0% 50%; }
         }
 
-        #loginOverlay, #registerOverlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; background: rgba(2, 6, 23, 0.95); }
+        /* التوقيع العلوي الثابت والمميز */
+        .top-signature {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.95rem;
+            border-bottom: 2px solid var(--accent);
+            letter-spacing: 0.5px;
+            z-index: 10000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        #loginOverlay, #registerOverlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; background: rgba(2, 6, 23, 0.95); padding-top: 60px; }
         .login-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px); padding: 35px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(251, 191, 36, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .login-card input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.4); color: white; text-align: center; box-sizing: border-box; }
         .btn-login { background: var(--accent); color: #000; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
-
-        #app { display: none; padding: 20px; max-width: 600px; margin: 0 auto; }
+        
+        #app { display: none; padding: 20px; max-width: 600px; margin: 0 auto; width: 100%; box-sizing: border-box; }
 
         .header-card { 
             background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(10px);
             color: white; padding: 30px 20px; border-radius: 30px; text-align: center; 
             margin-bottom: 25px; position: relative; border: 1px solid rgba(251, 191, 36, 0.2);
+            margin-top: 20px;
         }
-        
-        .welcome-user { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: bold; }
-        .profile-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
-        .badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; }
         
         .box { 
             background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 25px; border-radius: 25px; 
             margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-light);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        label { display: block; margin-bottom: 12px; font-weight: 700; color: var(--accent); font-size: 0.95rem; }
-        .pick-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        label { display: block; margin-bottom: 15px; font-weight: 700; color: var(--accent); font-size: 1rem; }
         
-        /* التنسيق الزجاجي للمربعات */
+        /* تنسيق الخانات الزجاجي الموحد */
+        .pick-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 25px; }
+        
         select { 
-            flex: 1; min-width: 65px; padding: 12px; border-radius: 12px; 
-            border: 1px solid rgba(251, 191, 36, 0.3); 
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(5px);
-            font-weight: bold; color: white; appearance: none; -webkit-appearance: none;
+            width: 100%; padding: 12px 5px; border-radius: 12px; 
+            border: 1px solid rgba(251, 191, 36, 0.4); 
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(8px);
+            font-weight: 900; color: white; 
             text-align: center; cursor: pointer; transition: 0.3s;
+            font-size: 1.1rem;
+            appearance: none;
         }
-        select:focus { outline: none; border-color: var(--accent); background: rgba(251, 191, 36, 0.1); }
-        option { background: #0f172a; color: white; }
+        select:hover { background: rgba(251, 191, 36, 0.15); border-color: var(--accent); }
+        option { background: #020617; color: white; }
         
-        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-        .btn-calc:hover { background: #fff; transform: translateY(-3px); }
+        .btn-calc { background: var(--accent); color: #000; width: 100%; padding: 18px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-        .result-box { background: rgba(255,255,255,0.1); border: 2px solid var(--accent); padding: 25px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; animation: fadeIn 0.5s; backdrop-filter: blur(15px); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .analysis-label { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 5px; }
-        .analysis-value { font-weight: bold; color: var(--accent); margin-bottom: 20px; font-size: 1rem; }
-        .target-label { font-weight: bold; color: var(--danger); margin-bottom: 8px; font-size: 1.1rem; }
-        .target-time { font-size: 2rem; font-weight: 900; color: white; margin-bottom: 20px; font-family: 'Courier New', monospace; text-shadow: 0 0 10px rgba(255,255,255,0.2); }
-
-        .call-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4); }
+        .result-box { background: rgba(255,255,255,0.1); border: 2px solid var(--accent); padding: 25px; border-radius: 25px; text-align: center; margin-top: 25px; display: none; backdrop-filter: blur(15px); }
+        .target-time { font-size: 2.2rem; font-weight: 900; color: white; margin-bottom: 20px; font-family: 'Courier New', monospace; text-shadow: 0 0 15px var(--accent); }
+        
+        .profile-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
+        .badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; }
+        .call-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 1000; }
         .log-item { position: relative; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin-bottom: 12px; border-right: 5px solid var(--accent); border: 1px solid rgba(255,255,255,0.1); }
-        .delete-btn { position: absolute; top: 10px; left: 10px; color: rgba(255,255,255,0.3); cursor: pointer; transition: 0.3s; }
-        .delete-btn:hover { color: var(--danger); }
-
-        .dev-signature {
-            font-size: 0.75rem;
-            color: rgba(251, 191, 36, 0.6);
-            margin-top: 20px;
-            text-align: center;
-            line-height: 1.6;
-            width: 100%;
-        }
+        .delete-btn { position: absolute; top: 10px; left: 10px; color: rgba(255,255,255,0.3); cursor: pointer; }
     </style>
 </head>
 <body>
+
+<div class="top-signature">
+    المهندس مهند إيهاب التهامي | خبير تطوير النظم البرمجية وهندسة الحلول الأمنية المتقدمة 🛡️💻
+</div>
 
 <a href="tel:01021102607" class="call-fab"><i class="fas fa-phone"></i></a>
 
@@ -108,9 +112,6 @@
         <input type="password" id="p" placeholder="كلمة المرور">
         <button class="btn-login" onclick="login()">دخول النظام</button>
         <span style="color:var(--accent); cursor:pointer; display:block; margin-top:20px; text-decoration:underline; font-size: 0.8rem;" onclick="toggleReg(true)">طلب تصريح دخول لضابط جديد</span>
-    </div>
-    <div class="dev-signature">
-        المهندس مهند إيهاب التهامي | خبير تطوير النظم البرمجية وهندسة الحلول الأمنية المتقدمة 🛡️💻
     </div>
 </div>
 
@@ -130,7 +131,7 @@
         <span id="role" class="badge"></span>
         <div onclick="location.reload()" style="position:absolute; top:15px; left:15px; cursor:pointer; opacity:0.6;"><i class="fas fa-power-off"></i></div>
         
-        <div class="profile-container">
+        <div class="profile-container" style="margin-bottom: 15px;">
             <img src="https://i.ibb.co/Y78PM4nn/me-jpg.jpg" class="profile-img" alt="المهندس مهند">
         </div>
         
@@ -139,10 +140,10 @@
     </div>
 
     <div class="box">
-        <label><i class="fas fa-video"></i> 1. توقيت الجهاز (DVR) الظاهر على الشاشة:</label>
+        <label><i class="fas fa-video"></i> 1. توقيت الجهاز (DVR) الظاهر الآن:</label>
         <div class="pick-row" id="camTime"></div>
 
-        <label><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة (الحقيقي):</label>
+        <label><i class="fas fa-stopwatch"></i> 2. توقيت الواقعة المراد البحث عنها:</label>
         <div class="pick-row" id="realTime"></div>
 
         <button class="btn-calc" onclick="calculate()">
@@ -150,10 +151,10 @@
         </button>
 
         <div id="result" class="result-box">
-            <div class="analysis-label">⚠️ الفارق الزمني المرصود:</div>
-            <div id="fullAnalysis" class="analysis-value"></div>
+            <div class="analysis-label" style="color:#cbd5e1; font-size: 0.9rem;">⚠️ الفارق الزمني المرصود:</div>
+            <div id="fullAnalysis" style="color:var(--accent); font-weight:bold; margin-bottom:20px;"></div>
 
-            <div class="target-label">🎯 نقطة البحث المستهدفة:</div>
+            <div class="target-label" style="color:var(--danger); font-weight:bold;">🎯 نقطة البحث المستهدفة:</div>
             <div id="resTime" class="target-time"></div>
             
             <button onclick="save()" style="width:100%; background: var(--accent); color:#000; border:none; padding:15px; border-radius:12px; font-weight:bold; cursor:pointer;">
@@ -164,16 +165,11 @@
 
     <div class="box">
         <h3 style="margin: 0 0 15px 0; font-size: 1rem; color: var(--accent);"><i class="fas fa-history"></i> أرشيف المعاينات</h3>
-        
         <div id="adminTabs" style="display:none; margin-bottom:15px; text-align: center;">
             <button onclick="view='my';render()" style="border:1px solid var(--accent); background:transparent; color:white; padding: 7px 15px; border-radius: 8px; cursor:pointer;">سجلاتي</button> | 
             <button onclick="view='all';render()" style="border:1px solid var(--accent); background:transparent; color:white; padding: 7px 15px; border-radius: 8px; cursor:pointer;">الرقابة العامة</button>
         </div>
         <div id="logList"></div>
-    </div>
-
-    <div class="dev-signature" style="margin-bottom: 40px;">
-        المهندس مهند إيهاب التهامي | خبير تطوير النظم البرمجية وهندسة الحلول الأمنية المتقدمة 🛡️💻
     </div>
 </div>
 
